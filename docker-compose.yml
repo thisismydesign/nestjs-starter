@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: npm run start
+    ports:
+      - "3000:3000"
+    volumes:
+      - node_modules_cache:/app/node_modules
+      - .:/app
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+
+volumes:
+  node_modules_cache:
