@@ -1,15 +1,20 @@
 import { Injectable } from '@nestjs/common';
-import { Company } from 'src/companies/interfaces/company.interface';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Company } from './company.entity';
 
 @Injectable()
 export class CompaniesService {
-  private readonly companies: Company[] = [];
+  constructor(
+    @InjectRepository(Company)
+    private companiesRepository: Repository<Company>,
+  ) {}
 
   create(company: Company) {
-    this.companies.push(company);
+    return this.companiesRepository.save(company);
   }
 
-  findAll(): Company[] {
-    return this.companies;
+  findAll() {
+    return this.companiesRepository.find();
   }
 }

@@ -2,10 +2,11 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConsoleModule } from 'nestjs-console';
+import { join } from 'path';
 
 import { EmployeesModule } from './employees/employees.module';
 import { CompaniesModule } from './companies/companies.module';
-import { join } from 'path';
+import { SeedService } from './console/seed.service';
 
 @Module({
   imports: [
@@ -20,11 +21,11 @@ import { join } from 'path';
       port: 5432,
       username: 'postgres',
       password: '',
-      // database: 'heyday',
-      entities: ['dist/**/*.model.js'],
-      synchronize: false,
+      autoLoadEntities: true,
+      synchronize: true,
     }),
     ConsoleModule,
   ],
+  providers: [SeedService],
 })
 export class AppModule {}

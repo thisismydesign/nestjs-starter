@@ -7,7 +7,7 @@ import {
   ManyToOne,
 } from 'typeorm';
 import { ObjectType, Field } from '@nestjs/graphql';
-import { CompanyModel } from '../companies/company.model';
+import { Company } from '../companies/company.entity';
 
 @ObjectType()
 @Entity()
@@ -24,9 +24,9 @@ export class EmployeeModel {
   @Column('text', { nullable: false })
   email: string;
 
-  @Field((type) => CompanyModel, { nullable: true })
-  @ManyToOne((type) => CompanyModel, (company) => company.employees)
-  company: CompanyModel;
+  // @Field((type) => Company, { nullable: true })
+  // @ManyToOne((type) => Company, (company) => company.employees)
+  // company: Company;
 
   @Field()
   @Column()

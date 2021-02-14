@@ -11,18 +11,18 @@ import { EmployeeModel } from '../employees/employee.model';
 
 @ObjectType()
 @Entity()
-export class CompanyModel {
+export class Company {
   @Field()
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id?: number;
 
   @Field()
   @Column({ length: 500, nullable: false })
   name: string;
 
-  @Field((type) => [EmployeeModel], { nullable: true })
-  @OneToMany((type) => EmployeeModel, (employee) => employee.company)
-  employees?: EmployeeModel[];
+  // @Field((type) => [EmployeeModel], { nullable: true })
+  // @OneToMany((type) => EmployeeModel, (employee) => employee.company)
+  // employees?: EmployeeModel[];
 
   @Field()
   @Column()

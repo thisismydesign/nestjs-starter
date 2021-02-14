@@ -1,7 +1,7 @@
 // import { InvoiceModel } from './../invoice/invoice.model';
 // import { InvoiceService } from './../invoice/invoice.service';
 // import { CustomerService } from './customer.service';
-import { CompanyModel } from './company.model';
+import { Company } from './company.entity';
 import {
   Resolver,
   Mutation,
@@ -13,13 +13,13 @@ import {
 import { Inject } from '@nestjs/common';
 import { CompaniesService } from './companies.service';
 
-@Resolver((of) => CompanyModel)
-export class CompanyResolver {
+@Resolver((of) => Company)
+export class CompaniesResolver {
   constructor(
     @Inject(CompaniesService) private companiesService: CompaniesService,
   ) {}
-  // @Query((returns) => CompanyModel)
-  // async customer(@Args('id') id: string): Promise<CompanyModel> {
+  // @Query((returns) => Company)
+  // async customer(@Args('id') id: string): Promise<Company> {
   //   return await this.customerService.findOne(id);
   // }
   // @ResolveField((returns) => [InvoiceModel])
@@ -28,8 +28,8 @@ export class CompanyResolver {
   //   console.log(customer);
   //   return this.invoiceService.findByCustomer(id);
   // }
-  @Query((returns) => [CompanyModel])
-  async companies(): Promise<CompanyModel[]> {
+  @Query((returns) => [Company])
+  async companies(): Promise<Company[]> {
     return await this.companiesService.findAll();
   }
 }
