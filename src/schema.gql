@@ -5,6 +5,7 @@
 type Company {
   id: Float!
   name: String!
+  employees: [Employee!]
   created_at: DateTime!
   updated_at: DateTime!
 }
@@ -14,6 +15,15 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type Employee {
+  id: Float!
+  name: String!
+  company: Company!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
 type Query {
+  employees: [Employee!]!
   companies: [Company!]!
 }

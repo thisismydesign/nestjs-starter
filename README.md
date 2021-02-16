@@ -17,3 +17,8 @@ Nest CLI:
 ```
 dc exec web npm run nest -- --help
 ```
+
+TypeORM CLI:
+```
+dc exec web npm run typeorm -- --help
+```

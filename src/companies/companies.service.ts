@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Company } from './company.entity';
+import { Company } from 'src/companies/company.entity';
 
 @Injectable()
 export class CompaniesService {
@@ -12,6 +12,10 @@ export class CompaniesService {
 
   create(company: Company) {
     return this.companiesRepository.save(company);
+  }
+
+  findOne(id: number) {
+    return this.companiesRepository.findOne(id);
   }
 
   findAll() {

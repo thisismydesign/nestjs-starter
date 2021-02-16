@@ -1,9 +1,13 @@
 import { Module } from '@nestjs/common';
-import { EmployeesController } from './employees.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Employee } from 'src/employees/employee.entity';
+import { EmployeesResolver } from './employees.resolver';
 import { EmployeesService } from './employees.service';
 
 @Module({
-  controllers: [EmployeesController],
-  providers: [EmployeesService],
+  imports: [TypeOrmModule.forFeature([Employee])],
+  providers: [EmployeesService, EmployeesResolver],
+  // EmployeesService needs to be accessed from SeedService
+  exports: [EmployeesService],
 })
 export class EmployeesModule {}

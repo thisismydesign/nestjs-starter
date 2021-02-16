@@ -1,15 +1,20 @@
 import { Injectable } from '@nestjs/common';
-import { Employee } from 'src/employees/interfaces/employee.interface';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Employee } from './employee.entity';
 
 @Injectable()
 export class EmployeesService {
-  private readonly employees: Employee[] = [];
+  constructor(
+    @InjectRepository(Employee)
+    private employeesRepository: Repository<Employee>,
+  ) {}
 
   create(employee: Employee) {
-    this.employees.push(employee);
+    return this.employeesRepository.save(employee);
   }
 
-  findAll(): Employee[] {
-    return this.employees;
+  findAll() {
+    return this.employeesRepository.find();
   }
 }

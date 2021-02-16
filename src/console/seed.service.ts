@@ -1,11 +1,13 @@
 import { Inject } from '@nestjs/common';
 import { Console, Command, createSpinner } from 'nestjs-console';
 import { CompaniesService } from 'src/companies/companies.service';
+import { EmployeesService } from 'src/employees/employees.service';
 
 @Console()
 export class SeedService {
   constructor(
     @Inject(CompaniesService) private companiesService: CompaniesService,
+    @Inject(EmployeesService) private employeesService: EmployeesService,
   ) {}
 
   @Command({
@@ -16,14 +18,22 @@ export class SeedService {
     const spin = createSpinner();
 
     console.log(
-      'Companies after seeding',
+      'Entityes before seeding',
       await this.companiesService.findAll(),
+      await this.employeesService.findAll(),
     );
 
     spin.start('Seeding the DB');
 
-    await this.companiesService.create({
+    const company = await this.companiesService.create({
       name: 'company',
+      created_at: new Date(),
+      updated_at: new Date(),
+    });
+
+    const employee = await this.employeesService.create({
+      name: 'Brian',
+      company: company,
       created_at: new Date(),
       updated_at: new Date(),
     });
@@ -31,8 +41,11 @@ export class SeedService {
     spin.succeed('Seed done');
 
     console.log(
-      'Companies after seeding',
+      'Entityes after seeding',
       await this.companiesService.findAll(),
+      await this.employeesService.findAll(),
     );
+
+    console.log(await (await this.companiesService.findOne(1)).employees);
   }
 }

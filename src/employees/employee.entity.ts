@@ -7,26 +7,22 @@ import {
   ManyToOne,
 } from 'typeorm';
 import { ObjectType, Field } from '@nestjs/graphql';
-import { Company } from '../companies/company.entity';
+import { Company } from 'src/companies/company.entity';
 
 @ObjectType()
 @Entity()
-export class EmployeeModel {
+export class Employee {
   @Field()
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id?: number;
 
   @Field()
   @Column({ length: 500, nullable: false })
   name: string;
 
-  @Field()
-  @Column('text', { nullable: false })
-  email: string;
-
-  // @Field((type) => Company, { nullable: true })
-  // @ManyToOne((type) => Company, (company) => company.employees)
-  // company: Company;
+  @Field((type) => Company)
+  @ManyToOne((type) => Company, (company) => company.employees)
+  company: Company;
 
   @Field()
   @Column()
