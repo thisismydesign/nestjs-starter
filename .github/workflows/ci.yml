@@ -1,0 +1,52 @@
+name: CI
+
+on: [push]
+
+env:
+  node_version: "14.x"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ env.node_version }}
+    - uses: c-hive/gha-npm-cache@v1
+    - name: Install JS dependencies
+      run: npm install
+    - name: Lint
+      run: npm run lint
+
+  test-unit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ env.node_version }}
+    - uses: c-hive/gha-npm-cache@v1
+    - name: Install JS dependencies
+      run: npm install
+    - name: Test
+      run: npm run test
+
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ env.node_version }}
+    - uses: c-hive/gha-npm-cache@v1
+    - name: Install JS dependencies
+      run: npm install
+    - name: Build
+      run: npm run build
