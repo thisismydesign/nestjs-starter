@@ -20,7 +20,7 @@ export class Company {
   @Column({ length: 500, nullable: false })
   name: string;
 
-  @Field((type) => [Employee], { nullable: true })
+  @Field((type) => [Employee], { nullable: 'items' })
   @OneToMany((type) => Employee, (employee) => employee.company)
   employees?: Employee[];
 

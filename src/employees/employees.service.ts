@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { FindManyOptions, Repository } from 'typeorm';
 import { Employee } from './employee.entity';
 
 @Injectable()
@@ -14,7 +14,7 @@ export class EmployeesService {
     return this.employeesRepository.save(employee);
   }
 
-  findAll() {
-    return this.employeesRepository.find();
+  findAll(params: FindManyOptions<Employee> = {}) {
+    return this.employeesRepository.find(params);
   }
 }
