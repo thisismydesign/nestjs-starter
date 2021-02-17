@@ -20,8 +20,8 @@ export class Employee {
   @Column({ length: 500, nullable: false })
   name: string;
 
-  @Field((type) => Company)
-  @ManyToOne((type) => Company, (company) => company.employees)
+  @Field((_type) => Company)
+  @ManyToOne((_type) => Company, (company) => company.employees)
   company: Company;
 
   @Field()

@@ -4,7 +4,7 @@ import { Inject } from '@nestjs/common';
 import { CompaniesService } from './companies.service';
 import { EmployeesService } from 'src/employees/employees.service';
 
-@Resolver((of) => Company)
+@Resolver((_of) => Company)
 export class CompaniesResolver {
   constructor(
     @Inject(CompaniesService) private companiesService: CompaniesService,
@@ -16,7 +16,7 @@ export class CompaniesResolver {
     return this.employeesService.findAll({ where: { company: company } });
   }
 
-  @Query((returns) => [Company])
+  @Query((_returns) => [Company])
   async companies(): Promise<Company[]> {
     return this.companiesService.findAll();
   }

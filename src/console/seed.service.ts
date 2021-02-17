@@ -31,7 +31,7 @@ export class SeedService {
       updated_at: new Date(),
     });
 
-    const employee = await this.employeesService.create({
+    await this.employeesService.create({
       name: 'Brian',
       company: company,
       created_at: new Date(),
@@ -45,7 +45,5 @@ export class SeedService {
       await this.companiesService.findAll(),
       await this.employeesService.findAll(),
     );
-
-    console.log(await (await this.companiesService.findOne(1)).employees);
   }
 }

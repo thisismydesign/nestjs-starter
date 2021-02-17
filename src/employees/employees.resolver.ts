@@ -4,7 +4,7 @@ import { EmployeesService } from './employees.service';
 import { Employee } from './employee.entity';
 import { CompaniesService } from 'src/companies/companies.service';
 
-@Resolver((of) => Employee)
+@Resolver((_of) => Employee)
 export class EmployeesResolver {
   constructor(
     @Inject(EmployeesService) private employeesService: EmployeesService,
@@ -16,7 +16,7 @@ export class EmployeesResolver {
     return this.companiesService.findOne(employee.id);
   }
 
-  @Query((returns) => [Employee])
+  @Query((_returns) => [Employee])
   async employees(): Promise<Employee[]> {
     return await this.employeesService.findAll();
   }
