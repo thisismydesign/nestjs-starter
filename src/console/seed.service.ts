@@ -1,7 +1,10 @@
 import { Inject } from '@nestjs/common';
 import { Console, Command, createSpinner } from 'nestjs-console';
+import * as Papa from 'papaparse';
 import { CompaniesService } from 'src/companies/companies.service';
 import { EmployeesService } from 'src/employees/employees.service';
+import * as fs from 'fs';
+import * as path from 'path';
 
 @Console()
 export class SeedService {
@@ -17,28 +20,29 @@ export class SeedService {
   async seed(): Promise<void> {
     const spin = createSpinner();
 
-    console.log(
-      'Entityes before seeding',
-      await this.companiesService.findAll(),
-      await this.employeesService.findAll(),
-    );
-
     spin.start('Seeding the DB');
 
-    const company = await this.companiesService.create({
-      name: 'company',
-      created_at: new Date(),
-      updated_at: new Date(),
+    const employeesData = fs.readFileSync(
+      path.join(__dirname, '..', '..', 'data-employees.csv'),
+      'utf8',
+    );
+    console.log(employeesData);
+
+    const parsedEmployeesData = Papa.parse(employeesData, { header: true });
+    // wait for all by promise.all & map
+    await parsedEmployeesData.data.forEach(async (employeeData) => {
+      console.log(employeeData);
+      // Find by ID or create
+      // ID is not used correctly atm
+      await this.companiesService.create({
+        id: employeeData['Company ID'],
+        name: employeeData['Company Title'],
+        created_at: new Date(),
+        updated_at: new Date(),
+      });
     });
 
-    await this.employeesService.create({
-      name: 'Brian',
-      company: company,
-      created_at: new Date(),
-      updated_at: new Date(),
-    });
-
-    spin.succeed('Seed done');
+    spin.succeed('Seeding done');
 
     console.log(
       'Entityes after seeding',
