@@ -14,6 +14,10 @@ export class EmployeesService {
     return this.employeesRepository.save(employee);
   }
 
+  findOne(id: number) {
+    return this.employeesRepository.findOne(id);
+  }
+
   findAll(params: FindManyOptions<Employee> = {}) {
     return this.employeesRepository.find(params);
   }

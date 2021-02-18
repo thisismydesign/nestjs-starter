@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { FindManyOptions, Repository } from 'typeorm';
 import { Company } from 'src/companies/company.entity';
 
 @Injectable()
@@ -18,7 +18,7 @@ export class CompaniesService {
     return this.companiesRepository.findOne(id);
   }
 
-  findAll() {
-    return this.companiesRepository.find();
+  findAll(params: FindManyOptions<Company> = {}) {
+    return this.companiesRepository.find(params);
   }
 }

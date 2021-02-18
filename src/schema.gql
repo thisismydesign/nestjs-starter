@@ -2,10 +2,10 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Employee {
+type Partner {
   id: Float!
   name: String!
-  company: Company!
+  vouchers: [Voucher]!
   created_at: DateTime!
   updated_at: DateTime!
 }
@@ -14,6 +14,34 @@ type Employee {
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
 scalar DateTime
+
+type Voucher {
+  id: Float!
+  amount: Float!
+  partner: Partner!
+  orders: [Order]!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+type Order {
+  id: Float!
+  date: DateTime!
+  voucher: Voucher!
+  employee: Employee!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+type Employee {
+  id: Float!
+  name: String!
+  budget: Float!
+  company: Company!
+  orders: [Order]!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
 
 type Company {
   id: Float!
@@ -26,4 +54,7 @@ type Company {
 type Query {
   employees: [Employee!]!
   companies: [Company!]!
+  orders: [Order!]!
+  vouchers: [Voucher!]!
+  partners: [Partner!]!
 }
