@@ -7,11 +7,17 @@ import { join } from 'path';
 import { EmployeesModule } from './employees/employees.module';
 import { CompaniesModule } from './companies/companies.module';
 import { SeedService } from './console/seed.service';
+import { PartnersModule } from './partners/partners.module';
+import { VouchersModule } from './vouchers/vouchers.module';
+import { OrdersModule } from './orders/orders.module';
 
 @Module({
   imports: [
     EmployeesModule,
     CompaniesModule,
+    PartnersModule,
+    VouchersModule,
+    OrdersModule,
     GraphQLModule.forRoot({
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),

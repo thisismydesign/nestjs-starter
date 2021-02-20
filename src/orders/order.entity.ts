@@ -32,10 +32,10 @@ export class Order {
   @Field()
   @Column()
   @CreateDateColumn()
-  created_at: Date;
+  created_at?: Date;
 
   @Field()
   @Column()
   @UpdateDateColumn()
-  updated_at: Date;
+  updated_at?: Date;
 }
