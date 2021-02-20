@@ -8,6 +8,7 @@ type Partner {
   vouchers: [Voucher]!
   created_at: DateTime!
   updated_at: DateTime!
+  revenue: Float!
 }
 
 """

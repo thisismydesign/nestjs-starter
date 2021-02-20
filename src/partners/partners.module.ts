@@ -1,5 +1,6 @@
 import { forwardRef, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { OrdersModule } from 'src/orders/orders.module';
 import { VouchersModule } from 'src/vouchers/vouchers.module';
 import { Partner } from './partner.entity';
 import { PartnersResolver } from './partners.resolver';
@@ -9,6 +10,7 @@ import { PartnersService } from './partners.service';
   imports: [
     TypeOrmModule.forFeature([Partner]),
     forwardRef(() => VouchersModule),
+    forwardRef(() => OrdersModule),
   ],
   providers: [PartnersService, PartnersResolver],
   // PartnersService needs to be accessed from SeedService

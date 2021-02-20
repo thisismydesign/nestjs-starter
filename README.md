@@ -10,7 +10,7 @@ dc exec web npm run console -- seed
 http://localhost:3000/graphql
 
 ```graphql
-query EmployeesByCompany($companyId: Int = 1, $month: DateTime = "2020-02-03") {
+query EmployeeSpendsByCompany($companyId: Int = 1, $month: DateTime = "2020-02-03") {
   employeesByCompany(companyId: $companyId) {
     id
     name
@@ -22,6 +22,14 @@ query EmployeesByCompany($companyId: Int = 1, $month: DateTime = "2020-02-03") {
         thirtyPercentBracket
       }
     }
+  }
+}
+
+query Partners {
+  partners {
+    id
+    name
+    revenue
   }
 }
 ```
@@ -46,5 +54,6 @@ Limitations:
 
 ## TODO
 
+- make CI use dc, seed in CI
 - tests
 - Seed: https://stackoverflow.com/questions/51198817/typeorm-how-to-seed-database
