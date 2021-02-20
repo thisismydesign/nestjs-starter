@@ -26,21 +26,31 @@ export class SeedService {
       path.join(__dirname, '..', '..', 'data-employees.csv'),
       'utf8',
     );
-    console.log(employeesData);
 
     const parsedEmployeesData = Papa.parse(employeesData, { header: true });
-    // wait for all by promise.all & map
-    await parsedEmployeesData.data.forEach(async (employeeData) => {
+    for await (const employeeData of parsedEmployeesData.data) {
       console.log(employeeData);
-      // Find by ID or create
-      // ID is not used correctly atm
-      await this.companiesService.create({
-        id: employeeData['Company ID'],
-        name: employeeData['Company Title'],
+      let company = await this.companiesService.findOne(
+        employeeData['Company ID'],
+      );
+      console.log(company);
+      if (!company) {
+        company = await this.companiesService.create({
+          id: employeeData['Company ID'],
+          name: employeeData['Company Title'],
+          created_at: new Date(),
+          updated_at: new Date(),
+        });
+      }
+      await this.employeesService.create({
+        id: employeeData['Employee ID'],
+        name: employeeData['Employee Name'],
+        budget: employeeData['Monthly Budget'],
+        company: company,
         created_at: new Date(),
         updated_at: new Date(),
       });
-    });
+    }
 
     spin.succeed('Seeding done');
 
