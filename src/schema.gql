@@ -65,7 +65,7 @@ type SpendDto {
 
 type Query {
   employees: [Employee!]!
-  employeesByCompany(companyId: Float!): [Employee!]!
+  employeesByCompany(companyId: Int!): [Employee!]!
   companies: [Company!]!
   orders: [Order!]!
   order(id: Int!): Order!

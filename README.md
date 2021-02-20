@@ -9,6 +9,23 @@ dc exec web npm run console -- seed
 
 http://localhost:3000/graphql
 
+```graphql
+query EmployeesByCompany($companyId: Int = 1, $month: DateTime = "2020-02-03") {
+  employeesByCompany(companyId: $companyId) {
+    id
+    name
+    spend
+    spendInMonth(month: $month) {
+      total
+      taxFree
+      taxable {
+        thirtyPercentBracket
+      }
+    }
+  }
+}
+```
+
 ### Useful commands
 
 Nest CLI:

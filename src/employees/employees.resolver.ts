@@ -1,4 +1,11 @@
-import { Resolver, Query, ResolveField, Parent, Args } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  ResolveField,
+  Parent,
+  Args,
+  Int,
+} from '@nestjs/graphql';
 import { Inject } from '@nestjs/common';
 import { EmployeesService } from './employees.service';
 import { Employee } from './employee.entity';
@@ -75,7 +82,7 @@ export class EmployeesResolver {
 
   @Query((_returns) => [Employee])
   async employeesByCompany(
-    @Args('companyId', { type: () => Number }) companyId: number,
+    @Args('companyId', { type: () => Int }) companyId: number,
   ): Promise<Employee[]> {
     return await this.employeesService.findAll({
       relations: ['company'],
