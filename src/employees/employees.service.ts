@@ -21,4 +21,8 @@ export class EmployeesService {
   findAll(params: FindManyOptions<Employee> = {}) {
     return this.employeesRepository.find(params);
   }
+
+  qb() {
+    return this.employeesRepository.createQueryBuilder();
+  }
 }

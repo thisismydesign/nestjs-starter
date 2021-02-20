@@ -41,6 +41,8 @@ type Employee {
   orders: [Order]!
   created_at: DateTime!
   updated_at: DateTime!
+  spend: Float!
+  spendInMonth(month: DateTime!): Float!
 }
 
 type Company {
@@ -53,8 +55,10 @@ type Company {
 
 type Query {
   employees: [Employee!]!
+  employeesByCompany(companyName: String!): [Employee!]!
   companies: [Company!]!
   orders: [Order!]!
+  order(id: Int!): Order!
   vouchers: [Voucher!]!
   partners: [Partner!]!
 }

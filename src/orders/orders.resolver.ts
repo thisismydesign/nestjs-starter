@@ -1,9 +1,17 @@
-import { Resolver, Query, ResolveField, Parent } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  ResolveField,
+  Parent,
+  Args,
+  Int,
+} from '@nestjs/graphql';
 import { Inject } from '@nestjs/common';
 import { EmployeesService } from 'src/employees/employees.service';
 import { Order } from './order.entity';
 import { OrdersService } from './orders.service';
 import { VouchersService } from 'src/vouchers/vouchers.service';
+import { FindManyOptions } from 'typeorm';
 
 @Resolver((_of) => Order)
 export class OrdersResolver {
@@ -24,7 +32,12 @@ export class OrdersResolver {
   }
 
   @Query((_returns) => [Order])
-  async orders(): Promise<Order[]> {
-    return this.ordersService.findAll();
+  async orders(params: FindManyOptions<Order> = {}): Promise<Order[]> {
+    return this.ordersService.findAll(params);
+  }
+
+  @Query((_returns) => Order)
+  async order(@Args('id', { type: () => Int }) id: number): Promise<Order> {
+    return this.ordersService.findOne(id);
   }
 }

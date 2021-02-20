@@ -1,9 +1,10 @@
-import { Resolver, Query, ResolveField, Parent } from '@nestjs/graphql';
+import { Resolver, Query, ResolveField, Parent, Args } from '@nestjs/graphql';
 import { Inject } from '@nestjs/common';
 import { EmployeesService } from './employees.service';
 import { Employee } from './employee.entity';
 import { CompaniesService } from 'src/companies/companies.service';
 import { OrdersService } from 'src/orders/orders.service';
+import { SelectQueryBuilder } from 'typeorm';
 
 @Resolver((_of) => Employee)
 export class EmployeesResolver {
@@ -23,8 +24,53 @@ export class EmployeesResolver {
     return this.ordersService.findAll({ where: { employee: employee } });
   }
 
+  @ResolveField((_returns) => Number)
+  async spend(@Parent() employee: Employee): Promise<number> {
+    return this.ordersService
+      .findAll({
+        where: { employee: employee },
+        relations: ['voucher'],
+      })
+      .then((orders) => {
+        return orders.reduce(
+          (accumulator, order) => accumulator + order.voucher.amount,
+          0,
+        );
+      });
+  }
+
+  @ResolveField((_returns) => Number)
+  async spendInMonth(
+    @Parent() employee: Employee,
+    @Args('month', { type: () => Date }) month: Date,
+  ): Promise<number> {
+    return this.ordersService
+      .findAll({
+        where: { employee: employee, date: month },
+        relations: ['voucher'],
+      })
+      .then((orders) => {
+        return orders.reduce(
+          (accumulator, order) => accumulator + order.voucher.amount,
+          0,
+        );
+      });
+  }
+
   @Query((_returns) => [Employee])
   async employees(): Promise<Employee[]> {
     return await this.employeesService.findAll();
+  }
+
+  @Query((_returns) => [Employee])
+  async employeesByCompany(
+    @Args('companyName', { type: () => String }) companyName: string,
+  ): Promise<Employee[]> {
+    return await this.employeesService.findAll({
+      relations: ['company'],
+      where: (qb: SelectQueryBuilder<Employee>) => {
+        qb.where('Employee__company.name = :name', { name: companyName });
+      },
+    });
   }
 }
