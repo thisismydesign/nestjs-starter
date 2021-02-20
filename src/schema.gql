@@ -42,7 +42,7 @@ type Employee {
   created_at: DateTime!
   updated_at: DateTime!
   spend: Float!
-  spendInMonth(month: DateTime!): Float!
+  spendInMonth(month: DateTime!): SpendDto!
 }
 
 type Company {
@@ -53,9 +53,19 @@ type Company {
   updated_at: DateTime!
 }
 
+type TaxableSpend {
+  thirtyPercentBracket: Float!
+}
+
+type SpendDto {
+  total: Float!
+  taxFree: Float!
+  taxable: TaxableSpend!
+}
+
 type Query {
   employees: [Employee!]!
-  employeesByCompany(companyName: String!): [Employee!]!
+  employeesByCompany(companyId: Float!): [Employee!]!
   companies: [Company!]!
   orders: [Order!]!
   order(id: Int!): Order!
