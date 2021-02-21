@@ -37,7 +37,7 @@ export class SeedService {
 
   async seedEmployees() {
     const employeesData = fs.readFileSync(
-      path.join(__dirname, '..', '..', 'data-employees.csv'),
+      path.join(__dirname, '..', '..', 'data', 'employees.csv'),
       'utf8',
     );
 
@@ -68,7 +68,7 @@ export class SeedService {
 
   async seedVouchers() {
     const vouchersData = fs.readFileSync(
-      path.join(__dirname, '..', '..', 'data-vouchers.csv'),
+      path.join(__dirname, '..', '..', 'data', 'vouchers.csv'),
       'utf8',
     );
 
@@ -98,7 +98,7 @@ export class SeedService {
 
   async seedOrders() {
     const ordersData = fs.readFileSync(
-      path.join(__dirname, '..', '..', 'data-orders.csv'),
+      path.join(__dirname, '..', '..', 'data', 'orders.csv'),
       'utf8',
     );
 
