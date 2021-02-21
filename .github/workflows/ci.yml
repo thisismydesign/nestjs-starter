@@ -19,7 +19,7 @@ jobs:
     - name: Lint
       run: docker-compose run --rm web npm run lint
 
-  test-unit:
+  test:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -31,8 +31,10 @@ jobs:
         docker-compose run --rm web sh -c 'exit 0'
         docker-compose up --detach
         docker-compose exec -T db psql -U postgres -c 'create database test;'
-    - name: Test
+    - name: Unit test
       run: docker-compose exec -T web npm run test
+    - name: E2E test
+      run: docker-compose exec -T web npm run test:e2e
 
   build:
     runs-on: ubuntu-latest

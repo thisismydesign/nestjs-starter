@@ -8,6 +8,7 @@ docker-compose exec web npm run console -- seed
 docker-compose exec web npm run lint
 docker-compose exec db psql -U postgres -c 'create database test;'
 docker-compose exec web npm run test
+docker-compose exec web npm run test:e2e
 ```
 
 http://localhost:3000/graphql

@@ -63,6 +63,7 @@ describe('Application', () => {
           .expect((res) => {
             expect(res.body.data.partners).toHaveLength(1);
             expect(res.body.data.partners[0].id).toEqual(partner.id);
+            expect(res.body.data.partners[0].revenue).toEqual(0);
           });
       });
 
