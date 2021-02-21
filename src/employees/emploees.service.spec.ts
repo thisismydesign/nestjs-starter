@@ -6,7 +6,7 @@ import { OrdersModule } from 'src/orders/orders.module';
 import { Employee } from './employee.entity';
 import { EmployeesService } from './employees.service';
 
-describe('CatsController', () => {
+describe('EmployeesService', () => {
   let employeesService: EmployeesService;
 
   beforeEach(async () => {
