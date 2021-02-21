@@ -107,6 +107,7 @@ describe('EmployeesService', () => {
   describe('spend', () => {
     let employee: Employee;
     const amount = 10;
+    const orderCount = 3;
 
     beforeEach(async () => {
       const company = await companiesService.create(companiesFactory.build());
@@ -118,17 +119,20 @@ describe('EmployeesService', () => {
         vouchersFactory.build({ partner: partner, amount: amount }),
       );
 
-      await ordersService.create(
-        ordersFactory.build({ voucher: voucher, employee: employee }),
-      );
-      await ordersService.create(
-        ordersFactory.build({ voucher: voucher, employee: employee }),
+      await Promise.all(
+        Array(orderCount)
+          .fill('')
+          .map(() => {
+            return ordersService.create(
+              ordersFactory.build({ voucher: voucher, employee: employee }),
+            );
+          }),
       );
     });
 
     it('returns total spend for employee', async () => {
       const result = await employeesService.spend(employee);
-      expect(result).toEqual(amount * 2);
+      expect(result).toEqual(amount * orderCount);
     });
   });
 });

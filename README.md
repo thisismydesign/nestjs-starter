@@ -28,7 +28,7 @@ query EmployeeSpendsByCompany($companyId: Int = 1, $month: DateTime = "2020-02-0
   }
 }
 
-query Partners {
+query PartnerRevenues {
   partners {
     id
     name
