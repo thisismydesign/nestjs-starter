@@ -29,7 +29,7 @@ jobs:
         docker-compose pull db
         docker-compose build
         docker-compose run --rm web sh -c 'exit 0'
-        docker-compose exec db psql -U postgres -c 'create database test;'
+        docker-compose run --rm db psql -U postgres -c 'create database test;'
     - name: Test
       run: docker-compose run --rm web npm run test
 
