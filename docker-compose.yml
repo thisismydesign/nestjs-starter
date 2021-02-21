@@ -8,6 +8,8 @@ services:
     command: npm run start:dev
     ports:
       - "3000:3000"
+    depends_on:
+      - db
     volumes:
       - node_modules_cache:/app/node_modules
       - .:/app
