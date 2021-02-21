@@ -8,11 +8,13 @@ import { OrdersModule } from 'src/orders/orders.module';
 import { getConnection } from 'typeorm';
 import { Employee } from './employee.entity';
 import { EmployeesService } from './employees.service';
-import companiesFactory from 'test/factories/company';
-import employeesFactory from 'test/factories/employee';
-import partnersFactory from 'test/factories/partner';
-import vouchersFactory from 'test/factories/voucher';
-import ordersFactory from 'test/factories/order';
+import {
+  partnersFactory,
+  companiesFactory,
+  employeesFactory,
+  vouchersFactory,
+  ordersFactory,
+} from 'test/factories';
 import { PartnersModule } from 'src/partners/partners.module';
 import { VouchersModule } from 'src/vouchers/vouchers.module';
 import { VouchersService } from 'src/vouchers/vouchers.service';

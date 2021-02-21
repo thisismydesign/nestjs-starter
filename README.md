@@ -51,6 +51,9 @@ docker-compose exec web npm run typeorm -- --help
 
 ## Learnings
 
+Resources:
+- https://github.com/jmcdo29/testing-nestjs
+
 Limitations:
 - Nested queries not supported by TypeORM https://github.com/typeorm/typeorm/issues/2707#issuecomment-748011818
 - No schema in TypeORM: https://github.com/typeorm/typeorm/issues/664
