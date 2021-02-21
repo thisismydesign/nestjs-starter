@@ -11,8 +11,7 @@ import { EmployeesService } from './employees.service';
 import { Employee } from './employee.entity';
 import { CompaniesService } from 'src/companies/companies.service';
 import { OrdersService } from 'src/orders/orders.service';
-import { SelectQueryBuilder } from 'typeorm';
-import { SpendDto, TaxableSpend } from './dto/spend.dto';
+import { SpendDto } from './dto/spend.dto';
 
 @Resolver((_of) => Employee)
 export class EmployeesResolver {
@@ -34,17 +33,7 @@ export class EmployeesResolver {
 
   @ResolveField((_returns) => Number)
   async spend(@Parent() employee: Employee): Promise<number> {
-    return this.ordersService
-      .findAll({
-        where: { employee: employee },
-        relations: ['voucher'],
-      })
-      .then((orders) => {
-        return orders.reduce(
-          (accumulator, order) => accumulator + order.voucher.amount,
-          0,
-        );
-      });
+    return this.employeesService.spend(employee);
   }
 
   @ResolveField((_returns) => SpendDto)
@@ -52,27 +41,7 @@ export class EmployeesResolver {
     @Parent() employee: Employee,
     @Args('month', { type: () => Date }) month: Date,
   ): Promise<SpendDto> {
-    const maxTaxFreeSpend = 44;
-
-    return this.ordersService
-      .findAll({
-        where: { employee: employee, date: month },
-        relations: ['voucher'],
-      })
-      .then((orders) => {
-        const spend = new SpendDto();
-        spend.total = orders.reduce(
-          (accumulator, order) => accumulator + order.voucher.amount,
-          0,
-        );
-        spend.taxFree = Math.min(maxTaxFreeSpend, spend.total);
-        spend.taxable = new TaxableSpend();
-        spend.taxable.thirtyPercentBracket = Math.max(
-          spend.total - maxTaxFreeSpend,
-          0,
-        );
-        return spend;
-      });
+    return this.employeesService.spendInMonth(employee, month);
   }
 
   @Query((_returns) => [Employee])
@@ -84,11 +53,6 @@ export class EmployeesResolver {
   async employeesByCompany(
     @Args('companyId', { type: () => Int }) companyId: number,
   ): Promise<Employee[]> {
-    return await this.employeesService.findAll({
-      relations: ['company'],
-      where: (qb: SelectQueryBuilder<Employee>) => {
-        qb.where('Employee__company.id = :id', { id: companyId });
-      },
-    });
+    return await this.employeesService.employeesByCompany(companyId);
   }
 }

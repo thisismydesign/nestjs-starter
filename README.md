@@ -3,9 +3,11 @@
 ## Usage
 
 ```sh
-docker-compose -up
+docker-compose up
 docker-compose exec web npm run console -- seed
+docker-compose exec web npm run lint
 docker-compose exec db psql -U postgres -c 'create database test;'
+docker-compose exec web npm run test
 ```
 
 http://localhost:3000/graphql
@@ -39,12 +41,12 @@ query Partners {
 
 Nest CLI:
 ```
-dc exec web npm run nest -- --help
+docker-compose exec web npm run nest -- --help
 ```
 
 TypeORM CLI:
 ```
-dc exec web npm run typeorm -- --help
+docker-compose exec web npm run typeorm -- --help
 ```
 
 ## Learnings
@@ -52,6 +54,7 @@ dc exec web npm run typeorm -- --help
 Limitations:
 - Nested queries not supported by TypeORM https://github.com/typeorm/typeorm/issues/2707#issuecomment-748011818
 - No schema in TypeORM: https://github.com/typeorm/typeorm/issues/664
+- No upsert in TypeORM: https://stackoverflow.com/questions/46745688/typeorm-upsert-create-if-not-exist
 
 ## TODO
 
