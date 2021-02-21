@@ -11,42 +11,49 @@ jobs:
     timeout-minutes: 10
     steps:
     - uses: actions/checkout@v2
-    - name: Setup Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ env.node_version }}
-    - uses: c-hive/gha-npm-cache@v1
-    - name: Install JS dependencies
-      run: npm install
+    - name: Setup
+      run: |
+        docker-compose pull db
+        docker-compose build
+        docker-compose run --rm web sh -c 'exit 0'
     - name: Lint
-      run: npm run lint
+      run: docker-compose run --rm web npm run lint
 
   test-unit:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
     - uses: actions/checkout@v2
-    - name: Setup Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ env.node_version }}
-    - uses: c-hive/gha-npm-cache@v1
-    - name: Install JS dependencies
-      run: npm install
+    - name: Setup
+      run: |
+        docker-compose pull db
+        docker-compose build
+        docker-compose run --rm web sh -c 'exit 0'
     - name: Test
-      run: npm run test
+      run: docker-compose run --rm web npm run test
 
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
     - uses: actions/checkout@v2
-    - name: Setup Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ env.node_version }}
-    - uses: c-hive/gha-npm-cache@v1
-    - name: Install JS dependencies
-      run: npm install
+    - name: Setup
+      run: |
+        docker-compose pull db
+        docker-compose build
+        docker-compose run --rm web sh -c 'exit 0'
     - name: Build
-      run: npm run build
+      run: docker-compose run --rm web npm run build
+
+  seed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup
+      run: |
+        docker-compose pull db
+        docker-compose build
+        docker-compose run --rm web sh -c 'exit 0'
+    - name: Seed
+      run: docker-compose run --rm web npm run console -- seed
