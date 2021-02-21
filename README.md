@@ -54,6 +54,6 @@ Limitations:
 
 ## TODO
 
-- make CI use dc, seed in CI
-- tests
-- Seed: https://stackoverflow.com/questions/51198817/typeorm-how-to-seed-database
+- tests & move business logic to services from providers
+- Seed via migrations API: https://stackoverflow.com/questions/51198817/typeorm-how-to-seed-database
+- Try https://github.com/doug-martin/nestjs-query
