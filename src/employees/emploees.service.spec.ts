@@ -114,25 +114,37 @@ describe('EmployeesService', () => {
       employee = await employeesService.create(
         employeesFactory.build({ company: company }),
       );
-      const partner = await partnersService.create(partnersFactory.build());
-      const voucher = await vouchersService.create(
-        vouchersFactory.build({ partner: partner, amount: amount }),
-      );
-
-      await Promise.all(
-        Array(orderCount)
-          .fill('')
-          .map(() => {
-            return ordersService.create(
-              ordersFactory.build({ voucher: voucher, employee: employee }),
-            );
-          }),
-      );
     });
 
-    it('returns total spend for employee', async () => {
+    it('returns 0', async () => {
       const result = await employeesService.spend(employee);
-      expect(result).toEqual(amount * orderCount);
+
+      expect(result).toEqual(0);
+    });
+
+    describe('when there are orders', () => {
+      beforeEach(async () => {
+        const partner = await partnersService.create(partnersFactory.build());
+        const voucher = await vouchersService.create(
+          vouchersFactory.build({ partner: partner, amount: amount }),
+        );
+
+        await Promise.all(
+          Array(orderCount)
+            .fill('')
+            .map(() => {
+              return ordersService.create(
+                ordersFactory.build({ voucher: voucher, employee: employee }),
+              );
+            }),
+        );
+      });
+
+      it('returns total order value employee', async () => {
+        const result = await employeesService.spend(employee);
+
+        expect(result).toEqual(amount * orderCount);
+      });
     });
   });
 });
