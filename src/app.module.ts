@@ -16,24 +16,24 @@ import { AppController } from './app.controller';
 
 @Module({
   imports: [
-    // EmployeesModule,
-    // CompaniesModule,
-    // PartnersModule,
-    // VouchersModule,
-    // OrdersModule,
-    // GraphQLModule.forRoot({
-    //   autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-    // }),
-    // TypeOrmModule.forRoot({
-    //   type: 'postgres',
-    //   host: 'db',
-    //   port: 5432,
-    //   username: 'postgres',
-    //   password: '',
-    //   autoLoadEntities: true,
-    //   synchronize: true,
-    // }),
-    // ConsoleModule,
+    EmployeesModule,
+    CompaniesModule,
+    PartnersModule,
+    VouchersModule,
+    OrdersModule,
+    GraphQLModule.forRoot({
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+    }),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'db',
+      port: 5432,
+      username: 'postgres',
+      password: '',
+      autoLoadEntities: true,
+      synchronize: true,
+    }),
+    ConsoleModule,
     RenderModule.forRootAsync(
       Next({
         dev: process.env.NODE_ENV !== 'production',
