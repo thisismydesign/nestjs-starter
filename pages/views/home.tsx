@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import * as React from 'react';
 
-const Index = (props) => {
+const Home = (props) => {
   // console.log(props);
   const { title } = props;
   return (
@@ -36,9 +36,9 @@ const Index = (props) => {
   );
 };
 
-Index.getInitialProps = (res) => {
+Home.getInitialProps = (res) => {
   const { query } = res;
   return { ...query };
 };
 
-export default Index;
+export default Home;
