@@ -4,11 +4,11 @@
 
 ```sh
 docker-compose up
-docker-compose exec web npm run console -- seed
-docker-compose exec web npm run lint
+docker-compose exec web yarn console -- seed
+docker-compose exec web yarn lint
 docker-compose exec db psql -U postgres -c 'create database test;'
-docker-compose exec web npm run test
-docker-compose exec web npm run test:e2e
+docker-compose exec web yarn test
+docker-compose exec web yarn test:e2e
 ```
 
 http://localhost:3000/graphql
@@ -42,12 +42,12 @@ query PartnerRevenues {
 
 Nest CLI:
 ```
-docker-compose exec web npm run nest -- --help
+docker-compose exec web yarn nest -- --help
 ```
 
 TypeORM CLI:
 ```
-docker-compose exec web npm run typeorm -- --help
+docker-compose exec web yarn typeorm -- --help
 ```
 
 ## Learnings

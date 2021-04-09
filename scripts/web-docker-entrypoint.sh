@@ -8,7 +8,7 @@ wait_for()
   echo "$2:$3 available"
 }
 
-npm install
+yarn install
 
 wait_for 10 db 5432
 

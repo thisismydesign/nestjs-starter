@@ -17,7 +17,7 @@ jobs:
         docker-compose build
         docker-compose run --rm web sh -c 'exit 0'
     - name: Lint
-      run: docker-compose run --rm web npm run lint
+      run: docker-compose run --rm web yarn lint
 
   test:
     runs-on: ubuntu-latest
@@ -32,9 +32,9 @@ jobs:
         docker-compose up --detach
         docker-compose exec -T db psql -U postgres -c 'create database test;'
     - name: Unit test
-      run: docker-compose exec -T web npm run test
+      run: docker-compose exec -T web yarn test
     - name: E2E test
-      run: docker-compose exec -T web npm run test:e2e
+      run: docker-compose exec -T web yarn test:e2e
 
   build:
     runs-on: ubuntu-latest
@@ -47,7 +47,7 @@ jobs:
         docker-compose build
         docker-compose run --rm web sh -c 'exit 0'
     - name: Build
-      run: docker-compose run --rm web npm run build
+      run: docker-compose run --rm web yarn build
 
   seed:
     runs-on: ubuntu-latest
@@ -60,4 +60,4 @@ jobs:
         docker-compose build
         docker-compose run --rm web sh -c 'exit 0'
     - name: Seed
-      run: docker-compose run --rm web npm run console -- seed
+      run: docker-compose run --rm web yarn console -- seed
