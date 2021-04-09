@@ -10,6 +10,8 @@ import { SeedService } from './console/seed.service';
 import { PartnersModule } from './partners/partners.module';
 import { VouchersModule } from './vouchers/vouchers.module';
 import { OrdersModule } from './orders/orders.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 @Module({
   imports: [
@@ -32,6 +34,7 @@ import { OrdersModule } from './orders/orders.module';
     }),
     ConsoleModule,
   ],
-  providers: [SeedService],
+  providers: [SeedService, AppService],
+  controllers: [AppController],
 })
 export class AppModule {}
