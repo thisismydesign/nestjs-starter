@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: yarn start:dev
+    command: yarn start
     ports:
       - "3000:3000"
     depends_on:
