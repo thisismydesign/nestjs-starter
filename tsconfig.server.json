@@ -12,10 +12,9 @@
     "baseUrl": "./",
     "incremental": true
   },
+  "//include": "Specific include list required to avoid rebuilds: https://github.com/nestjs/nest-cli/issues/664#issuecomment-610811854",
+  "include": ["src/**/*"],
   "exclude": [
     "node_modules",
-    ".next",
-    "dist",
-    "pages"
   ]
 }
