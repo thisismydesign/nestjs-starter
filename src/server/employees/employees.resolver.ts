@@ -9,8 +9,8 @@ import {
 import { Inject } from '@nestjs/common';
 import { EmployeesService } from './employees.service';
 import { Employee } from './employee.entity';
-import { CompaniesService } from 'src/companies/companies.service';
-import { OrdersService } from 'src/orders/orders.service';
+import { CompaniesService } from 'src/server/companies/companies.service';
+import { OrdersService } from 'src/server/orders/orders.service';
 import { SpendDto } from './dto/spend.dto';
 
 @Resolver((_of) => Employee)

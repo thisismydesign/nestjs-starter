@@ -7,10 +7,10 @@ import {
   Int,
 } from '@nestjs/graphql';
 import { Inject } from '@nestjs/common';
-import { EmployeesService } from 'src/employees/employees.service';
+import { EmployeesService } from 'src/server/employees/employees.service';
 import { Order } from './order.entity';
 import { OrdersService } from './orders.service';
-import { VouchersService } from 'src/vouchers/vouchers.service';
+import { VouchersService } from 'src/server/vouchers/vouchers.service';
 import { FindManyOptions } from 'typeorm';
 
 @Resolver((_of) => Order)

@@ -7,8 +7,8 @@ import {
   ManyToOne,
 } from 'typeorm';
 import { ObjectType, Field } from '@nestjs/graphql';
-import { Voucher } from 'src/vouchers/voucher.entity';
-import { Employee } from 'src/employees/employee.entity';
+import { Voucher } from 'src/server/vouchers/voucher.entity';
+import { Employee } from 'src/server/employees/employee.entity';
 
 @ObjectType()
 @Entity()

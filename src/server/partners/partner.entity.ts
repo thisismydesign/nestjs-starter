@@ -7,22 +7,22 @@ import {
   OneToMany,
 } from 'typeorm';
 import { ObjectType, Field } from '@nestjs/graphql';
-import { Employee } from 'src/employees/employee.entity';
+import { Voucher } from 'src/server/vouchers/voucher.entity';
 
 @ObjectType()
 @Entity()
-export class Company {
+export class Partner {
   @Field()
   @PrimaryGeneratedColumn()
   id?: number;
 
   @Field()
-  @Column({ length: 500, nullable: false })
+  @Column({ nullable: false })
   name: string;
 
-  @Field((_type) => [Employee], { nullable: 'items' })
-  @OneToMany((_type) => Employee, (employee) => employee.company)
-  employees?: Employee[];
+  @Field((_type) => [Voucher], { nullable: 'items' })
+  @OneToMany((_type) => Voucher, (voucher) => voucher.partner)
+  vouchers?: Voucher[];
 
   @Field()
   @Column()
