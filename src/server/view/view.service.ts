@@ -1,6 +1,6 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
-import Next from 'next';
-import NextServer from 'next/dist/next-server/server/next-server';
+import createServer from 'next';
+import { NextServer } from 'next/dist/server/next';
 
 @Injectable()
 export class ViewService implements OnModuleInit {
@@ -8,13 +8,9 @@ export class ViewService implements OnModuleInit {
 
   async onModuleInit(): Promise<void> {
     try {
-      this.server = Next({
+      this.server = createServer({
         dev: process.env.NODE_ENV !== 'production',
         dir: './src/client',
-        // @ts-ignore
-        conf: {
-          useFileSystemPublicRoutes: false,
-        },
       });
       await this.server.prepare();
     } catch (error) {
