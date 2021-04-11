@@ -8,26 +8,30 @@ import {
   OneToMany,
 } from 'typeorm';
 import { ObjectType, Field } from '@nestjs/graphql';
-import { Partner } from 'src/server/partners/partner.entity';
-import { Order } from 'src/server/orders/order.entity';
+import { Company } from 'src/server/app/companies/company.entity';
+import { Order } from 'src/server/app/orders/order.entity';
 
 @ObjectType()
 @Entity()
-export class Voucher {
+export class Employee {
   @Field()
   @PrimaryGeneratedColumn()
   id?: number;
 
   @Field()
   @Column({ nullable: false })
-  amount: number;
+  name: string;
 
-  @Field((_type) => Partner)
-  @ManyToOne((_type) => Partner, (partner) => partner.vouchers)
-  partner: Partner;
+  @Field()
+  @Column({ nullable: false })
+  budget: number;
+
+  @Field((_type) => Company)
+  @ManyToOne((_type) => Company, (company) => company.employees)
+  company: Company;
 
   @Field((_type) => [Order], { nullable: 'items' })
-  @OneToMany((_type) => Order, (order) => order.voucher)
+  @OneToMany((_type) => Order, (order) => order.employee)
   orders?: Order[];
 
   @Field()

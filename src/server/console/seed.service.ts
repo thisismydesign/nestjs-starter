@@ -1,13 +1,13 @@
 import { Inject } from '@nestjs/common';
 import { Console, Command, createSpinner } from 'nestjs-console';
 import * as Papa from 'papaparse';
-import { CompaniesService } from 'src/server/companies/companies.service';
-import { EmployeesService } from 'src/server/employees/employees.service';
+import { CompaniesService } from 'src/server/app/companies/companies.service';
+import { EmployeesService } from 'src/server/app/employees/employees.service';
 import * as fs from 'fs';
 import * as path from 'path';
-import { PartnersService } from 'src/server/partners/partners.service';
-import { VouchersService } from 'src/server/vouchers/vouchers.service';
-import { OrdersService } from 'src/server/orders/orders.service';
+import { PartnersService } from 'src/server/app/partners/partners.service';
+import { VouchersService } from 'src/server/app/vouchers/vouchers.service';
+import { OrdersService } from 'src/server/app/orders/orders.service';
 
 @Console()
 export class SeedService {

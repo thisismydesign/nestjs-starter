@@ -1,10 +1,10 @@
 import { forwardRef } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CompaniesModule } from 'src/server/companies/companies.module';
-import { CompaniesService } from 'src/server/companies/companies.service';
-import { Company } from 'src/server/companies/company.entity';
-import { OrdersModule } from 'src/server/orders/orders.module';
+import { CompaniesModule } from 'src/server/app/companies/companies.module';
+import { CompaniesService } from 'src/server/app/companies/companies.service';
+import { Company } from 'src/server/app/companies/company.entity';
+import { OrdersModule } from 'src/server/app/orders/orders.module';
 import { getConnection } from 'typeorm';
 import { Employee } from './employee.entity';
 import { EmployeesService } from './employees.service';
@@ -15,11 +15,11 @@ import {
   vouchersFactory,
   ordersFactory,
 } from 'test/factories';
-import { PartnersModule } from 'src/server/partners/partners.module';
-import { VouchersModule } from 'src/server/vouchers/vouchers.module';
-import { VouchersService } from 'src/server/vouchers/vouchers.service';
-import { PartnersService } from 'src/server/partners/partners.service';
-import { OrdersService } from 'src/server/orders/orders.service';
+import { PartnersModule } from 'src/server/app/partners/partners.module';
+import { VouchersModule } from 'src/server/app/vouchers/vouchers.module';
+import { VouchersService } from 'src/server/app/vouchers/vouchers.service';
+import { PartnersService } from 'src/server/app/partners/partners.service';
+import { OrdersService } from 'src/server/app/orders/orders.service';
 
 describe('EmployeesService', () => {
   let employeesService: EmployeesService;

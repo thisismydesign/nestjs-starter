@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { VouchersService } from 'src/server/vouchers/vouchers.service';
+import { VouchersService } from 'src/server/app/vouchers/vouchers.service';
 import { FindManyOptions, Repository } from 'typeorm';
 import { Partner } from './partner.entity';
 

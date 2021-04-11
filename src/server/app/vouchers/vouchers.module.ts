@@ -1,7 +1,7 @@
 import { forwardRef, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { OrdersModule } from 'src/server/orders/orders.module';
-import { PartnersModule } from 'src/server/partners/partners.module';
+import { OrdersModule } from 'src/server/app/orders/orders.module';
+import { PartnersModule } from 'src/server/app/partners/partners.module';
 import { Voucher } from './voucher.entity';
 import { VouchersResolver } from './vouchers.resolver';
 import { VouchersService } from './vouchers.service';

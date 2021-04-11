@@ -4,12 +4,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConsoleModule } from 'nestjs-console';
 import { join } from 'path';
 
-import { EmployeesModule } from './employees/employees.module';
-import { CompaniesModule } from './companies/companies.module';
-import { SeedService } from './console/seed.service';
-import { PartnersModule } from './partners/partners.module';
-import { VouchersModule } from './vouchers/vouchers.module';
-import { OrdersModule } from './orders/orders.module';
+import { EmployeesModule } from 'src/server/app/employees/employees.module';
+import { CompaniesModule } from 'src/server/app/companies/companies.module';
+import { SeedService } from 'src/server/console/seed.service';
+import { PartnersModule } from 'src/server/app/partners/partners.module';
+import { VouchersModule } from 'src/server/app/vouchers/vouchers.module';
+import { OrdersModule } from 'src/server/app/orders/orders.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 

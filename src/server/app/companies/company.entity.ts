@@ -7,7 +7,7 @@ import {
   OneToMany,
 } from 'typeorm';
 import { ObjectType, Field } from '@nestjs/graphql';
-import { Employee } from 'src/server/employees/employee.entity';
+import { Employee } from 'src/server/app/employees/employee.entity';
 
 @ObjectType()
 @Entity()

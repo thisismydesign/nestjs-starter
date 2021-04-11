@@ -1,9 +1,9 @@
 import { forwardRef, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CompaniesService } from './companies.service';
-import { Company } from 'src/server/companies/company.entity';
+import { Company } from 'src/server/app/companies/company.entity';
 import { CompaniesResolver } from './companies.resolver';
-import { EmployeesModule } from 'src/server/employees/employees.module';
+import { EmployeesModule } from 'src/server/app/employees/employees.module';
 
 @Module({
   imports: [

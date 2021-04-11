@@ -1,5 +1,5 @@
 import { Factory } from 'fishery';
-import { Company } from 'src/server/companies/company.entity';
+import { Company } from 'src/server/app/companies/company.entity';
 import * as faker from 'faker';
 
 export default Factory.define<Company>(({ sequence }) => ({

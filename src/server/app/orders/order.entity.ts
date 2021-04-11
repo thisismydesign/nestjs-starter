@@ -4,25 +4,30 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  OneToMany,
+  ManyToOne,
 } from 'typeorm';
 import { ObjectType, Field } from '@nestjs/graphql';
-import { Voucher } from 'src/server/vouchers/voucher.entity';
+import { Voucher } from 'src/server/app/vouchers/voucher.entity';
+import { Employee } from 'src/server/app/employees/employee.entity';
 
 @ObjectType()
 @Entity()
-export class Partner {
+export class Order {
   @Field()
   @PrimaryGeneratedColumn()
   id?: number;
 
   @Field()
   @Column({ nullable: false })
-  name: string;
+  date: Date;
 
-  @Field((_type) => [Voucher], { nullable: 'items' })
-  @OneToMany((_type) => Voucher, (voucher) => voucher.partner)
-  vouchers?: Voucher[];
+  @Field((_type) => Voucher)
+  @ManyToOne((_type) => Voucher, (voucher) => voucher.orders)
+  voucher: Voucher;
+
+  @Field((_type) => Employee)
+  @ManyToOne((_type) => Employee, (employee) => employee.orders)
+  employee: Employee;
 
   @Field()
   @Column()

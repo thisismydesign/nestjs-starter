@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FindManyOptions, Repository, SelectQueryBuilder } from 'typeorm';
-import { Employee } from 'src/server/employees/employee.entity';
-import { OrdersService } from 'src/server/orders/orders.service';
+import { Employee } from 'src/server/app/employees/employee.entity';
+import { OrdersService } from 'src/server/app/orders/orders.service';
 import { SpendDto, TaxableSpend } from './dto/spend.dto';
 
 @Injectable()

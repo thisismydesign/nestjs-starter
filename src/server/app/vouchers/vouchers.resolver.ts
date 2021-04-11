@@ -2,8 +2,8 @@ import { Resolver, Query, ResolveField, Parent } from '@nestjs/graphql';
 import { Inject } from '@nestjs/common';
 import { Voucher } from './voucher.entity';
 import { VouchersService } from './vouchers.service';
-import { PartnersService } from 'src/server/partners/partners.service';
-import { OrdersService } from 'src/server/orders/orders.service';
+import { PartnersService } from 'src/server/app/partners/partners.service';
+import { OrdersService } from 'src/server/app/orders/orders.service';
 
 @Resolver((_of) => Voucher)
 export class VouchersResolver {

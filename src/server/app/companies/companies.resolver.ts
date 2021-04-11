@@ -2,7 +2,7 @@ import { Company } from './company.entity';
 import { Resolver, Query, ResolveField, Parent } from '@nestjs/graphql';
 import { Inject } from '@nestjs/common';
 import { CompaniesService } from './companies.service';
-import { EmployeesService } from 'src/server/employees/employees.service';
+import { EmployeesService } from 'src/server/app/employees/employees.service';
 
 @Resolver((_of) => Company)
 export class CompaniesResolver {
