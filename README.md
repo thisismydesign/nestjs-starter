@@ -9,6 +9,7 @@ docker-compose exec web yarn lint
 docker-compose exec db psql -U postgres -c 'create database test;'
 docker-compose exec web yarn test
 docker-compose exec web yarn test:e2e
+docker-compose exec web yarn build
 ```
 
 http://localhost:3000/graphql
