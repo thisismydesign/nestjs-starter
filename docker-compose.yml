@@ -11,13 +11,9 @@ services:
     depends_on:
       - db
     volumes:
-      - node_modules_cache:/app/node_modules
       - .:/app
 
   db:
     image: postgres
     environment:
       POSTGRES_HOST_AUTH_METHOD: "trust"
-
-volumes:
-  node_modules_cache:
