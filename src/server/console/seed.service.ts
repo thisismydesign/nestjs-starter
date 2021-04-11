@@ -11,13 +11,17 @@ import { OrdersService } from 'src/server/orders/orders.service';
 
 @Console()
 export class SeedService {
+  private dataRoot: string;
+
   constructor(
     @Inject(CompaniesService) private companiesService: CompaniesService,
     @Inject(EmployeesService) private employeesService: EmployeesService,
     @Inject(PartnersService) private partnersService: PartnersService,
     @Inject(VouchersService) private vouchersService: VouchersService,
     @Inject(OrdersService) private ordersService: OrdersService,
-  ) {}
+  ) {
+    this.dataRoot = path.join(__dirname, '..', '..', '..', 'data');
+  }
 
   @Command({
     command: 'seed',
@@ -37,7 +41,7 @@ export class SeedService {
 
   async seedEmployees() {
     const employeesData = fs.readFileSync(
-      path.join(__dirname, '..', '..', 'data', 'employees.csv'),
+      path.join(this.dataRoot, 'employees.csv'),
       'utf8',
     );
 
@@ -68,7 +72,7 @@ export class SeedService {
 
   async seedVouchers() {
     const vouchersData = fs.readFileSync(
-      path.join(__dirname, '..', '..', 'data', 'vouchers.csv'),
+      path.join(this.dataRoot, 'vouchers.csv'),
       'utf8',
     );
 
@@ -98,7 +102,7 @@ export class SeedService {
 
   async seedOrders() {
     const ordersData = fs.readFileSync(
-      path.join(__dirname, '..', '..', 'data', 'orders.csv'),
+      path.join(this.dataRoot, 'orders.csv'),
       'utf8',
     );
 
