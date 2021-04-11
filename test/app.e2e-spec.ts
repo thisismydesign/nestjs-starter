@@ -1,8 +1,8 @@
 import * as request from 'supertest';
 import { Test } from '@nestjs/testing';
-import { AppModule } from './../src/app.module';
+import { AppModule } from 'src/server/app/app.module';
 import { INestApplication } from '@nestjs/common';
-import { PartnersService } from 'src/partners/partners.service';
+import { PartnersService } from 'src/server/app/partners/partners.service';
 import { getConnection } from 'typeorm';
 import {
   partnersFactory,
@@ -11,11 +11,11 @@ import {
   vouchersFactory,
   ordersFactory,
 } from 'test/factories';
-import { Partner } from 'src/partners/partner.entity';
-import { CompaniesService } from 'src/companies/companies.service';
-import { EmployeesService } from 'src/employees/employees.service';
-import { VouchersService } from 'src/vouchers/vouchers.service';
-import { OrdersService } from 'src/orders/orders.service';
+import { Partner } from 'src/server/app/partners/partner.entity';
+import { CompaniesService } from 'src/server/app/companies/companies.service';
+import { EmployeesService } from 'src/server/app/employees/employees.service';
+import { VouchersService } from 'src/server/app/vouchers/vouchers.service';
+import { OrdersService } from 'src/server/app/orders/orders.service';
 
 describe('Application', () => {
   let app: INestApplication;

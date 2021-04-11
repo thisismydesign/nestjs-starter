@@ -11,5 +11,6 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true
-  }
+  },
+  "include": ["src/server", "test"],
 }

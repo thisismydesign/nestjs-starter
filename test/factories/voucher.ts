@@ -1,5 +1,5 @@
 import { Factory } from 'fishery';
-import { Voucher } from 'src/vouchers/voucher.entity';
+import { Voucher } from 'src/server/app/vouchers/voucher.entity';
 import * as faker from 'faker';
 import partnerFactory from './partner';
 
