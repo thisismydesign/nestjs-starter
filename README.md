@@ -45,7 +45,7 @@ query PartnerRevenues {
 ```sh
 heroku git:remote --app <app-name>
 heroku stack:set container
-heroku config:set NODE_END=production
+heroku config:set NODE_ENV=production
 heroku addons:create heroku-postgresql:hobby-dev
 ```
 
