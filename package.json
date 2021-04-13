@@ -8,7 +8,7 @@
     "nest": "nest",
     "next": "cd src/client && next",
     "prebuild": "rimraf dist",
-    "build": "nest build && cd src/client && next build",
+    "build": "NODE_ENV=production nest build && cd src/client && next build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch --preserveWatchOutput",

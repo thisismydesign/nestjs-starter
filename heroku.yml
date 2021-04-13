@@ -1,0 +1,5 @@
+build:
+  docker:
+    web: Dockerfile.prod
+run:
+  web: yarn start:prod
