@@ -30,6 +30,7 @@ import { AppService } from './app.service';
       url: process.env.DATABASE_URL,
       autoLoadEntities: true,
       synchronize: true,
+      ssl: process.env.NODE_ENV === 'production',
     }),
     ConsoleModule,
   ],
