@@ -3,6 +3,7 @@
 ## Usage
 
 ```sh
+cp .env.example .env
 docker-compose up
 docker-compose exec web yarn console -- seed
 docker-compose exec web yarn lint
@@ -37,6 +38,15 @@ query PartnerRevenues {
     revenue
   }
 }
+```
+
+## Deloyment
+
+```sh
+heroku git:remote --app <app-name>
+heroku stack:set container
+heroku config:set NODE_END=production
+heroku addons:create heroku-postgresql:hobby-dev
 ```
 
 ### Useful commands

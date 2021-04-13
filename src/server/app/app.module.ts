@@ -3,6 +3,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConsoleModule } from 'nestjs-console';
 import { join } from 'path';
+import { ConfigModule } from '@nestjs/config';
 
 import { EmployeesModule } from 'src/server/app/employees/employees.module';
 import { CompaniesModule } from 'src/server/app/companies/companies.module';
@@ -15,6 +16,7 @@ import { AppService } from './app.service';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     EmployeesModule,
     CompaniesModule,
     PartnersModule,
@@ -25,7 +27,7 @@ import { AppService } from './app.service';
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'db',
+      host: process.env.DATABASE_URL,
       port: 5432,
       username: 'postgres',
       password: '',
