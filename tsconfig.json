@@ -12,5 +12,5 @@
     "baseUrl": "./",
     "incremental": true
   },
-  "include": ["src/server", "test"],
+  "include": ["src/server", "test", "ormconfig.ts"],
 }
