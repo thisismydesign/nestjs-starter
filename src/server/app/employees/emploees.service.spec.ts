@@ -38,12 +38,7 @@ describe('EmployeesService', () => {
         forwardRef(() => PartnersModule),
         forwardRef(() => VouchersModule),
         TypeOrmModule.forRoot({
-          type: 'postgres',
-          host: 'db',
-          port: 5432,
-          username: 'postgres',
-          password: '',
-          database: 'test',
+          url: process.env.DATABASE_URL,
           autoLoadEntities: true,
           synchronize: true,
         }),

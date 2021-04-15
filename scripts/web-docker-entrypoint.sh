@@ -12,4 +12,6 @@ yarn install
 
 wait_for 10 db 5432
 
+yarn typeorm migration:run
+
 exec "$@"

@@ -64,4 +64,4 @@ jobs:
         docker-compose build
         docker-compose run --rm web sh -c 'exit 0'
     - name: Seed
-      run: docker-compose run --rm web yarn console -- seed
+      run: docker-compose run --rm web yarn console seed
