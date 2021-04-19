@@ -13,6 +13,8 @@ import { VouchersModule } from 'src/server/app/vouchers/vouchers.module';
 import { OrdersModule } from 'src/server/app/orders/orders.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -35,6 +37,8 @@ import { AppService } from './app.service';
           : false,
     }),
     ConsoleModule,
+    AuthModule,
+    UsersModule,
   ],
   providers: [SeedService, AppService],
   controllers: [AppController],
