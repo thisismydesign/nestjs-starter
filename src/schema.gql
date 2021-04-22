@@ -64,6 +64,12 @@ type SpendDto {
   taxable: TaxableSpend!
 }
 
+type User {
+  userId: Float!
+  username: String!
+  password: String!
+}
+
 type Query {
   employees: [Employee!]!
   employeesByCompany(companyId: Int!): [Employee!]!
@@ -72,4 +78,5 @@ type Query {
   order(id: Int!): Order!
   vouchers: [Voucher!]!
   partners: [Partner!]!
+  whoAmI: User!
 }
