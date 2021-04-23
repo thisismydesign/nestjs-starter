@@ -7,6 +7,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
 import { JwtStrategy } from './jwt.strategy';
 import { ConfigService } from '@nestjs/config';
+import { GoogleOauthModule } from './google/google-oauth.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { ConfigService } from '@nestjs/config';
       },
       inject: [ConfigService],
     }),
+    GoogleOauthModule,
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy],
   exports: [AuthService, JwtModule],
