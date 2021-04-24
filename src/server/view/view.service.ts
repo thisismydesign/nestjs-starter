@@ -17,7 +17,7 @@ export class ViewService implements OnModuleInit {
       });
       await this.server.prepare();
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 

@@ -9,7 +9,6 @@ const Profile: NextPage<{ user: Request['user'] }> = (props) => {
 };
 
 Profile.getInitialProps = async ({ req }) => {
-  console.log((req as Request).user);
   return {
     user: (req as Request).user,
   };

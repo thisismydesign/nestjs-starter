@@ -6,8 +6,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { ObjectType, Field } from '@nestjs/graphql';
-
-export type Provider = 'google' | 'local';
+import { Provider } from 'src/server/common/types/user';
 
 @ObjectType()
 @Entity()
