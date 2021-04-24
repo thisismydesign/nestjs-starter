@@ -65,9 +65,13 @@ type SpendDto {
 }
 
 type User {
-  userId: Float!
+  id: Float!
+  provider: String!
+  providerId: String!
   username: String!
-  password: String!
+  name: String!
+  created_at: DateTime!
+  updated_at: DateTime!
 }
 
 type Query {
@@ -78,5 +82,5 @@ type Query {
   order(id: Int!): Order!
   vouchers: [Voucher!]!
   partners: [Partner!]!
-  whoAmI: User!
+  users: [User!]!
 }
