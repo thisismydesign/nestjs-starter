@@ -83,4 +83,5 @@ type Query {
   vouchers: [Voucher!]!
   partners: [Partner!]!
   users: [User!]!
+  whoAmI: User!
 }

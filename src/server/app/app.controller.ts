@@ -1,7 +1,6 @@
 import { Controller, Request, Get, UseGuards } from '@nestjs/common';
 
 import { AppService } from './app.service';
-import { GoogleOauthGuard } from './auth/google/google-oauth.guard';
 import { JwtAuthGuard } from './auth/jwt/jwt-auth.guard';
 
 @Controller()
@@ -16,12 +15,6 @@ export class AppController {
   @UseGuards(JwtAuthGuard)
   @Get('profile')
   getProfile(@Request() req) {
-    return req.user;
-  }
-
-  @UseGuards(GoogleOauthGuard)
-  @Get('googleauth')
-  getGoogleProfile(@Request() req) {
     return req.user;
   }
 }
