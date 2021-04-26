@@ -4,6 +4,6 @@ import { Controller, Get, Res } from '@nestjs/common';
 export class AuthController {
   @Get()
   async auth(@Res() res) {
-    return res.redirect('/auth/google');
+    return res.redirect('/auth/cognito');
   }
 }
