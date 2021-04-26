@@ -8,12 +8,12 @@ Opinionated NestJS boilerplate for rapid development with battle-tested standard
 
 It has
 - Example REST and GraphQL modules, DB using TypeORM as seen on https://docs.nestjs.com/
-- [Next.js](https://nextjs.org/) integration for server-rednered React pages
-- Authentication via [Passport.js](http://www.passportjs.org/) including Social providers and [AWS Cognito](https://aws.amazon.com/cognito/) and JWT strategy for REST and GraphQL
+- [Next.js](https://nextjs.org/) integration for server-rendered React pages
+- Authentication via [Passport.js](http://www.passportjs.org/) including Social providers, [AWS Cognito](https://aws.amazon.com/cognito/), and JWT strategy for REST and GraphQL
 - Docker setup
 - Typescript, ESLint
 - CI via GitHub Actions
-- Console for task running (including DB seeding) via [nestjs-console](https://github.com/Pop-Code/nestjs-console)
+- Running tasks (e.g. DB seeding) via [nestjs-console](https://github.com/Pop-Code/nestjs-console)
 - Unit and integration testing via Jest
 - Heroku deployment setup
 
