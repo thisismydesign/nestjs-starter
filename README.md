@@ -1,4 +1,21 @@
-# NestJS Playground
+# NestJS Starter
+
+Opinionated NestJS boilerplate for rapid development with battle-tested standards.
+
+[Use this template](https://github.com/thisismydesign/nestjs-starter/generate)
+
+## Stack
+
+It has
+- Example REST and GraphQL modules, DB using TypeORM as seen on https://docs.nestjs.com/
+- [Next.js](https://nextjs.org/) integration for server-rednered React pages
+- Authentication via [Passport.js](http://www.passportjs.org/) including Social providers and [AWS Cognito](https://aws.amazon.com/cognito/) and JWT strategy for REST and GraphQL
+- Docker setup
+- Typescript, ESLint
+- CI via GitHub Actions
+- Console for task running (including DB seeding) via [nestjs-console](https://github.com/Pop-Code/nestjs-console)
+- Unit and integration testing via Jest
+- Heroku deployment setup
 
 ## Usage
 
@@ -13,32 +30,26 @@ docker-compose exec web yarn test:e2e
 docker-compose exec web yarn build
 ```
 
-http://localhost:3000/graphql
+REST endpoint via Nest
+- http://localhost:3000/
 
-```graphql
-query EmployeeSpendsByCompany($companyId: Int = 1, $month: DateTime = "2020-02-03") {
-  employeesByCompany(companyId: $companyId) {
-    id
-    name
-    spend
-    spendInMonth(month: $month) {
-      total
-      taxFree
-      taxable {
-        thirtyPercentBracket
-      }
-    }
-  }
-}
+JWT-protected REST endpoint via Nest
+- http://localhost:3000/private
 
-query PartnerRevenues {
-  partners {
-    id
-    name
-    revenue
-  }
-}
-```
+GraphQL playground (`query WhoAmI` is JWT-protected)
+- http://localhost:3000/graphql
+
+Cognito auth (redirects to hosted Cognito UI)
+- http://localhost:3000/auth/cognito
+
+Google auth
+- http://localhost:3000/auth/google
+
+Next.js page
+- http://localhost:3000/home
+
+JWT-protected Next.js page
+- http://localhost:3000/profile
 
 ## Deloyment
 
@@ -62,17 +73,6 @@ TypeORM CLI:
 docker-compose exec web yarn typeorm -- --help
 ```
 
-## Learnings
+## Resources
 
-Resources:
 - https://github.com/jmcdo29/testing-nestjs
-
-Limitations:
-- Nested queries not supported by TypeORM https://github.com/typeorm/typeorm/issues/2707#issuecomment-748011818
-- No schema in TypeORM: https://github.com/typeorm/typeorm/issues/664
-- No upsert in TypeORM: https://stackoverflow.com/questions/46745688/typeorm-upsert-create-if-not-exist
-
-## TODO
-
-- Seed via migrations API: https://stackoverflow.com/questions/51198817/typeorm-how-to-seed-database
-- Try https://github.com/doug-martin/nestjs-query
