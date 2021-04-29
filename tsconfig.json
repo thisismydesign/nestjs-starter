@@ -15,5 +15,5 @@
   "ts-node": {
     "files": true
   },
-  "include": ["src/server", "test", "ormconfig.ts"],
+  "include": ["src/server", "test", "ormconfig.ts", "jest.config.ts"],
 }
