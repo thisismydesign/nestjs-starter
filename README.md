@@ -56,8 +56,8 @@ JWT-protected Next.js page
 ```sh
 heroku git:remote --app <app-name>
 heroku stack:set container
-heroku config:set NODE_ENV=production
-heroku config:set <all config from .env.example>
+cp .env .env.production # Fill production values
+xargs -a .env.production -I {} heroku config:set {}
 heroku addons:create heroku-postgresql:hobby-dev
 ```
 
