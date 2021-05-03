@@ -21,9 +21,11 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json --setupFiles dotenv-flow/config",
     "console": "ts-node -r tsconfig-paths/register src/server/console.ts",
-    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "client:generate:schema": "zeus src/schema.gql src/client/app/types --ts"
   },
   "dependencies": {
+    "@apollo/client": "^3.3.16",
     "@nestjs/common": "^7.5.1",
     "@nestjs/config": "^0.6.3",
     "@nestjs/core": "^7.5.1",
@@ -78,6 +80,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "faker": "^5.4.0",
     "fishery": "^1.2.0",
+    "graphql-zeus": "2.8.6",
     "jest": "^26.6.3",
     "prettier": "^2.1.2",
     "supertest": "^6.0.0",
