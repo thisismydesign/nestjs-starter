@@ -37,6 +37,46 @@ JWT-protected REST endpoint via Nest
 
 GraphQL playground (`query WhoAmI` is JWT-protected)
 - http://localhost:3000/graphql
+```qgl
+query Public {
+  things {
+    id
+    name
+  }
+
+  users {
+    id
+    provider
+  }
+}
+
+# Add Header: { "Authorization": "Bearer <token>" }
+query Private {
+  whoAmI {
+    id,
+    provider,
+    providerId,
+    username,
+    name
+  }
+  
+  orders {
+    id
+    
+    alias
+    thing {
+      name
+    }
+  }
+}
+
+mutation createOrder {
+  createOrder(alias: "myname", thingName: "this is a thing you can order") {
+    id
+    alias
+  }
+}
+```
 
 Cognito auth (redirects to hosted Cognito UI)
 - http://localhost:3000/auth/cognito

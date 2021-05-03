@@ -8,6 +8,7 @@ type User {
   providerId: String!
   username: String!
   name: String!
+  orders: [Order]!
   created_at: DateTime!
   updated_at: DateTime!
 }
@@ -17,7 +18,30 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type Order {
+  id: Float!
+  alias: String!
+  user: User!
+  thing: Thing!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+type Thing {
+  id: Float!
+  name: String!
+  orders: [Order]!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
 type Query {
   users: [User!]!
   whoAmI: User!
+  things: [Thing!]!
+  orders: [Order!]!
+}
+
+type Mutation {
+  createOrder(alias: String!, thingName: String!): Order!
 }
