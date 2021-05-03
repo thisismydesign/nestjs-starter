@@ -51,17 +51,3 @@ jobs:
         docker-compose run --rm web sh -c 'exit 0'
     - name: Build
       run: docker-compose run --rm web yarn build
-
-  seed:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-    - uses: actions/checkout@v2
-    - name: Setup
-      run: |
-        cp .env.example .env
-        docker-compose pull db
-        docker-compose build
-        docker-compose run --rm web sh -c 'exit 0'
-    - name: Seed
-      run: docker-compose run --rm web yarn console seed

@@ -22,7 +22,6 @@ It has
 ```sh
 cp .env.example .env
 docker-compose up
-docker-compose exec web yarn console seed
 docker-compose exec web yarn lint
 docker-compose exec db psql -U postgres -c 'create database test;'
 docker-compose exec web yarn test

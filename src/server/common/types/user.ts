@@ -1,4 +1,4 @@
-export type Provider = 'google' | 'local';
+export type Provider = 'google' | 'cognito';
 
 export class User {
   id: number;

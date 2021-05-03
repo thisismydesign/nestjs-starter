@@ -11,7 +11,6 @@ export class UsersResolver {
   constructor(@Inject(UsersService) private usersService: UsersService) {}
 
   @Query((_returns) => [User])
-  @UseGuards(GqlAuthGuard)
   async users(params: FindManyOptions<User> = {}): Promise<User[]> {
     return this.usersService.findAll(params);
   }

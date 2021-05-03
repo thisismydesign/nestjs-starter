@@ -2,28 +2,14 @@ import * as request from 'supertest';
 import { Test } from '@nestjs/testing';
 import { AppModule } from 'src/server/app/app.module';
 import { INestApplication } from '@nestjs/common';
-import { PartnersService } from 'src/server/app/partners/partners.service';
 import { getConnection } from 'typeorm';
-import {
-  partnersFactory,
-  companiesFactory,
-  employeesFactory,
-  vouchersFactory,
-  ordersFactory,
-} from 'test/factories';
-import { Partner } from 'src/server/app/partners/partner.entity';
-import { CompaniesService } from 'src/server/app/companies/companies.service';
-import { EmployeesService } from 'src/server/app/employees/employees.service';
-import { VouchersService } from 'src/server/app/vouchers/vouchers.service';
-import { OrdersService } from 'src/server/app/orders/orders.service';
+import { usersFactory } from 'test/factories';
+import { UsersService } from 'src/server/app/users/users.service';
+import { User } from 'src/server/app/users/user.entity';
 
 describe('Application', () => {
   let app: INestApplication;
-  let employeesService: EmployeesService;
-  let companiesService: CompaniesService;
-  let vouchersService: VouchersService;
-  let partnersService: PartnersService;
-  let ordersService: OrdersService;
+  let usersService: UsersService;
 
   beforeAll(async () => {
     const moduleFixture = await Test.createTestingModule({
@@ -33,11 +19,7 @@ describe('Application', () => {
     app = moduleFixture.createNestApplication();
     await app.init();
 
-    employeesService = app.get(EmployeesService);
-    companiesService = app.get(CompaniesService);
-    vouchersService = app.get(VouchersService);
-    partnersService = app.get(PartnersService);
-    ordersService = app.get(OrdersService);
+    usersService = app.get(UsersService);
   });
 
   beforeEach(async () => {
@@ -46,64 +28,29 @@ describe('Application', () => {
 
   describe('GraphQL', () => {
     const endpoint = '/graphql';
+    let agent: request.Test;
 
-    describe('partners', () => {
-      const query = '{ partners { id name revenue } }';
-      let partner: Partner;
+    beforeEach(async () => {
+      agent = request(app.getHttpServer()).post(endpoint);
+    });
+
+    describe('users', () => {
+      const query = '{ users { id provider } }';
+      let user: User;
 
       beforeEach(async () => {
-        partner = await partnersService.create(partnersFactory.build());
+        user = await usersService.create(usersFactory.build());
       });
 
-      it('returns partners', () => {
-        return request(app.getHttpServer())
-          .post(endpoint)
+      it('returns users', () => {
+        return agent
           .send({ query: query })
           .expect(200)
           .expect((res) => {
-            expect(res.body.data.partners).toHaveLength(1);
-            expect(res.body.data.partners[0].id).toEqual(partner.id);
-            expect(res.body.data.partners[0].revenue).toEqual(0);
+            expect(res.body.data.users).toHaveLength(1);
+            expect(res.body.data.users[0].id).toEqual(user.id);
+            expect(res.body.data.users[0].provider).toEqual(user.provider);
           });
-      });
-
-      describe('when there are orders', () => {
-        const amount = 10;
-        const orderCount = 3;
-
-        beforeEach(async () => {
-          const company = await companiesService.create(
-            companiesFactory.build(),
-          );
-          const employee = await employeesService.create(
-            employeesFactory.build({ company: company }),
-          );
-          const voucher = await vouchersService.create(
-            vouchersFactory.build({ partner: partner, amount: amount }),
-          );
-
-          await Promise.all(
-            Array(orderCount)
-              .fill('')
-              .map(() => {
-                return ordersService.create(
-                  ordersFactory.build({ voucher: voucher, employee: employee }),
-                );
-              }),
-          );
-        });
-
-        it('returns partners with revenue', () => {
-          return request(app.getHttpServer())
-            .post(endpoint)
-            .send({ query: query })
-            .expect(200)
-            .expect((res) => {
-              expect(res.body.data.partners[0].revenue).toEqual(
-                amount * orderCount,
-              );
-            });
-        });
       });
     });
   });
