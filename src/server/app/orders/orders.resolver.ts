@@ -30,8 +30,6 @@ export class OrdersResolver {
 
   @ResolveField()
   thing(@Parent() order: Order) {
-    console.log(order);
-    console.log(order.thing);
     return this.thingsService.findOne({
       where: { id: order.thing.id },
     });
