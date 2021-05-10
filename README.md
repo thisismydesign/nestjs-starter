@@ -30,6 +30,8 @@ docker-compose exec web yarn test:e2e
 docker-compose exec web yarn build
 ```
 
+## Functionality
+
 REST endpoint via Nest
 - http://localhost:3000/
 
