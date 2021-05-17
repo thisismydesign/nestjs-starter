@@ -1,5 +1,5 @@
 import React from 'react';
-import { NextPage } from 'next';
+import { NextPage, InferGetStaticPropsType } from 'next';
 import { Request } from 'express';
 
 import { typedQuery } from '../app/apollo-client';
@@ -15,9 +15,7 @@ export async function getServerSideProps({ req }) {
   };
 }
 
-type Props = ExtractPromiseType<ReturnType<typeof getServerSideProps>>;
-
-const Orders: NextPage<Props['props']> = (props) => {
+const Orders: NextPage<InferGetStaticPropsType<typeof getServerSideProps>> = (props) => {
   return (
     <div>
       <h1>Orders overview</h1>

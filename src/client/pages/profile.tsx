@@ -1,5 +1,5 @@
 import React from 'react';
-import { NextPage } from 'next';
+import { NextPage, InferGetStaticPropsType } from 'next';
 import { Request } from 'express';
 
 export async function getServerSideProps({ req }) {
@@ -8,9 +8,7 @@ export async function getServerSideProps({ req }) {
   };
 }
 
-type Props = ExtractPromiseType<ReturnType<typeof getServerSideProps>>;
-
-const Profile: NextPage<Props['props']> = (props) => {
+const Profile: NextPage<InferGetStaticPropsType<typeof getServerSideProps>> = (props) => {
   const { user } = props;
 
   return <h1>Profile {JSON.stringify(user)}</h1>;
