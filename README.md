@@ -10,7 +10,7 @@ It has
 - Example REST and GraphQL modules, DB using TypeORM as seen on https://docs.nestjs.com/
 - [Next.js](https://nextjs.org/) integration for React on the frontend ([howto article](https://csaba-apagyi.medium.com/nestjs-react-next-js-in-one-mvc-repo-for-rapid-prototyping-faed42a194ca))
 - Typed queries & results with GraphQL out of the box ([howto article](https://csaba-apagyi.medium.com/automagically-typed-graphql-queries-and-results-with-apollo-3731bad989aa))
-- Authentication via [Passport.js](http://www.passportjs.org/) including Social providers, [AWS Cognito](https://aws.amazon.com/cognito/), and JWT strategy for REST and GraphQL
+- Authentication via [Passport.js](http://www.passportjs.org/) including Social providers ([howto article](https://medium.com/csaba.apagyi/oauth2-in-nestjs-for-social-login-google-facebook-twitter-etc-8b405d570fd2)), [AWS Cognito](https://aws.amazon.com/cognito/) ([howto article](https://medium.com/csaba.apagyi/cognito-via-oauth2-in-nestjs-outsourcing-authentication-without-vendor-lock-in-ce908518f547)), and JWT strategy for REST and GraphQL
 - Docker setup
 - Typescript, ESLint
 - CI via GitHub Actions
