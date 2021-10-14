@@ -103,6 +103,8 @@ xargs -a .env.production -I {} heroku config:set {}
 heroku addons:create heroku-postgresql:hobby-dev
 ```
 
+> Be aware that `app.module.ts` is expecting an environment variable `NODE_ENV` to equal `production` to enable SSL for the database. Enable this config var in the Heroku app to avoid a `error: no pg_hba.conf entry for host 'xxx.xxx.xxx'` error.
+
 ### Useful commands
 
 Nest CLI:
