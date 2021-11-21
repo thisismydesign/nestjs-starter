@@ -1,5 +1,8 @@
 FROM node:14-alpine
 
+# curl needed to display Heroku release logs
+RUN apk --no-cache add curl
+
 WORKDIR /app
 
 COPY package.json yarn.lock ./
