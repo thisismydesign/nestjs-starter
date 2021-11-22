@@ -5,9 +5,6 @@
     "NODE_ENV": {
       "value": "production"
     },
-    "DATABASE_URL": {
-      "description": "Provided by add-on"
-    },
     "JWT_SECRET": {
       "generator": "secret"
     },
