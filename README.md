@@ -4,6 +4,8 @@ Opinionated NestJS MVC boilerplate for rapid development with battle-tested stan
 
 [Use this template](https://github.com/thisismydesign/nestjs-starter/generate)
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 ## Stack
 
 It has
@@ -92,16 +94,6 @@ Next.js page
 
 JWT-protected Next.js page
 - http://localhost:3000/profile
-
-## Deloyment
-
-```sh
-heroku git:remote --app <app-name>
-heroku stack:set container
-cp .env .env.production # Fill production values
-xargs -a .env.production -I {} heroku config:set {}
-heroku addons:create heroku-postgresql:hobby-dev
-```
 
 ### Useful commands
 
