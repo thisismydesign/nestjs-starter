@@ -64,6 +64,7 @@
     "webpack": "^5.0.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^6.0.0-alpha.3",
     "@nestjs/cli": "^8.2.0",
     "@nestjs/schematics": "^8.0.5",
     "@nestjs/testing": "^8.2.5",
@@ -85,7 +86,6 @@
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "faker": "5.5.3",
     "fishery": "^2.1.0",
     "graphql-zeus": "4.0.4",
     "jest": "^27.4.7",
