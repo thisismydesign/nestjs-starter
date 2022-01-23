@@ -1,7 +1,7 @@
 # NestJS Starter
 [![CI](https://github.com/thisismydesign/nestjs-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/thisismydesign/nestjs-starter/actions/workflows/ci.yml)
 
-Opinionated NestJS MVC boilerplate for rapid development with battle-tested standards.
+#### Opinionated NestJS MVC boilerplate for rapid development with battle-tested standards.
 
 [Use this template](https://github.com/thisismydesign/nestjs-starter/generate)
 
