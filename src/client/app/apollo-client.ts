@@ -9,21 +9,15 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-export const context = (req: Request) => {
-  return {
-    headers: {
-      authorization: `Bearer ${req.cookies['jwt']}`,
-    },
-  };
-};
-
 export const typedQuery = async <Q extends ValueTypes['Query']>(
   query: Q,
   req: Request,
 ) => {
   const { data } = await client.query({
     query: gql(Zeus.query(query)),
-    context: context(req),
+    context: {
+      headers: { Cookie: req.headers.cookie },
+    },
   });
 
   const typedData = data as MapType<Query, Q>;
