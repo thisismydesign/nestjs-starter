@@ -5,7 +5,7 @@ export class User {
   provider: Provider;
   providerId: string;
   username: string;
-  name: string;
+  name?: string;
   created_at: Date;
   updated_at: Date;
 }

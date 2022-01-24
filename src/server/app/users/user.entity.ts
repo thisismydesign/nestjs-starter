@@ -31,7 +31,7 @@ export class User {
 
   @Field()
   @Column({ nullable: false })
-  name: string;
+  name?: string;
 
   @Field((_type) => [Order], { nullable: 'items' })
   @OneToMany((_type) => Order, (order) => order.user)
