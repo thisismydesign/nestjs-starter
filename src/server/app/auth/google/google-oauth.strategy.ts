@@ -25,7 +25,9 @@ export class GoogleOauthStrategy extends PassportStrategy(Strategy, 'google') {
   ) {
     const { id, name, emails } = profile;
 
-    let user = await this.usersService.findOneByProvider('google', id);
+    let user = await this.usersService.findOne({
+      where: { provider: 'google', providerId: id },
+    });
     if (!user) {
       user = await this.usersService.create({
         provider: 'google',
