@@ -62,9 +62,15 @@ export class CognitoOauthStrategy extends PassportStrategy(
       )
     ).data;
 
-    const [provider, providerId] = userinfo.username.split('_');
+    let [provider, providerId] = userinfo.username.split('_');
+    if (!providerId) {
+      provider = 'cognito';
+      providerId = userinfo.username;
+    }
 
-    let user = await this.usersService.findOneByProvider(provider, providerId);
+    let user = await this.usersService.findOne({
+      where: { provider, providerId },
+    });
     if (!user) {
       user = await this.usersService.create({
         provider,
