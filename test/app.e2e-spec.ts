@@ -3,6 +3,8 @@ import { Test } from '@nestjs/testing';
 import { AppModule } from 'src/server/app/app.module';
 import { INestApplication } from '@nestjs/common';
 import { getConnection } from 'typeorm';
+import * as cookieParser from 'cookie-parser';
+
 import { usersFactory, ordersFactory, thingsFactory } from 'test/factories';
 import { UsersService } from 'src/server/app/users/users.service';
 import { User } from 'src/server/app/users/user.entity';
@@ -25,6 +27,7 @@ describe('Application', () => {
     }).compile();
 
     app = moduleFixture.createNestApplication();
+    app.use(cookieParser());
     await app.init();
 
     usersService = app.get(UsersService);
