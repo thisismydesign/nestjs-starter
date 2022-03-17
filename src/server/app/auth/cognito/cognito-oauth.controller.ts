@@ -20,7 +20,7 @@ export class CognitoOauthController {
     const { accessToken } = this.jwtAuthService.login(req.user);
     res.cookie(SESSION_COOKIE_KEY, accessToken, {
       httpOnly: true,
-      sameSite: 'strict',
+      sameSite: 'lax',
     });
     return res.redirect('/profile');
   }
