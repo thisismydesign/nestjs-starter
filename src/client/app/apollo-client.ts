@@ -1,7 +1,7 @@
 import { ApolloClient, gql, InMemoryCache } from '@apollo/client';
 import { Request } from 'express';
 
-import { Zeus, MapType, Query, ValueTypes } from './types/graphql-zeus';
+import { Zeus, ValueTypes, GraphQLTypes, InputType } from './types/zeus';
 
 const client = new ApolloClient({
   // TODO: make this configurable
@@ -9,20 +9,15 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-export const typedQuery = async <Q extends ValueTypes['Query']>(
-  query: Q,
+export const typedQuery = <Z extends ValueTypes[O], O extends 'Query'>(
+  query: Z | ValueTypes[O],
   req: Request,
+  operationName?: string,
 ) => {
-  const { data } = await client.query({
-    query: gql(Zeus.query(query)),
-    context: {
-      headers: { Cookie: req.headers.cookie },
-    },
+  return client.query<InputType<GraphQLTypes[O], Z>>({
+    query: gql(Zeus('query', query, operationName)),
+    context: { headers: { Cookie: req.headers.cookie } },
   });
-
-  const typedData = data as MapType<Query, Q>;
-
-  return typedData;
 };
 
 export default client;

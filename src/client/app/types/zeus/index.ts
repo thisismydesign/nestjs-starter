@@ -1,203 +1,138 @@
-/* tslint:disable */
 /* eslint-disable */
+
+import { AllTypesProps, ReturnTypes } from './const';
+type ZEUS_INTERFACES = never
+type ZEUS_UNIONS = never
 
 export type ValueTypes = {
     ["User"]: AliasType<{
-	id?:true,
-	provider?:true,
-	providerId?:true,
-	username?:true,
-	name?:true,
+	id?:boolean,
+	provider?:boolean,
+	providerId?:boolean,
+	username?:boolean,
+	name?:boolean,
 	orders?:ValueTypes["Order"],
-	created_at?:true,
-	updated_at?:true,
-		__typename?: true
+	created_at?:boolean,
+	updated_at?:boolean,
+		__typename?: boolean
 }>;
 	/** A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format. */
 ["DateTime"]:unknown;
 	["Order"]: AliasType<{
-	id?:true,
-	alias?:true,
+	id?:boolean,
+	alias?:boolean,
 	user?:ValueTypes["User"],
 	thing?:ValueTypes["Thing"],
-	created_at?:true,
-	updated_at?:true,
-		__typename?: true
+	created_at?:boolean,
+	updated_at?:boolean,
+		__typename?: boolean
 }>;
 	["Thing"]: AliasType<{
-	id?:true,
-	name?:true,
+	id?:boolean,
+	name?:boolean,
 	orders?:ValueTypes["Order"],
-	created_at?:true,
-	updated_at?:true,
-		__typename?: true
+	created_at?:boolean,
+	updated_at?:boolean,
+		__typename?: boolean
 }>;
 	["Query"]: AliasType<{
 	users?:ValueTypes["User"],
 	whoAmI?:ValueTypes["User"],
 	things?:ValueTypes["Thing"],
 	orders?:ValueTypes["Order"],
-		__typename?: true
+		__typename?: boolean
 }>;
 	["Mutation"]: AliasType<{
 createOrder?: [{	alias:string,	thingName:string},ValueTypes["Order"]],
-		__typename?: true
+		__typename?: boolean
 }>
   }
 
-export type PartialObjects = {
+export type ModelTypes = {
     ["User"]: {
-		__typename?: "User";
-			id?:number,
-			provider?:string,
-			providerId?:string,
-			username?:string,
-			name?:string,
-			orders?:PartialObjects["Order"][],
-			created_at?:PartialObjects["DateTime"],
-			updated_at?:PartialObjects["DateTime"]
-	},
-	/** A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format. */
-["DateTime"]:any,
-	["Order"]: {
-		__typename?: "Order";
-			id?:number,
-			alias?:string,
-			user?:PartialObjects["User"],
-			thing?:PartialObjects["Thing"],
-			created_at?:PartialObjects["DateTime"],
-			updated_at?:PartialObjects["DateTime"]
-	},
-	["Thing"]: {
-		__typename?: "Thing";
-			id?:number,
-			name?:string,
-			orders?:PartialObjects["Order"][],
-			created_at?:PartialObjects["DateTime"],
-			updated_at?:PartialObjects["DateTime"]
-	},
-	["Query"]: {
-		__typename?: "Query";
-			users?:PartialObjects["User"][],
-			whoAmI?:PartialObjects["User"],
-			things?:PartialObjects["Thing"][],
-			orders?:PartialObjects["Order"][]
-	},
-	["Mutation"]: {
-		__typename?: "Mutation";
-			createOrder?:PartialObjects["Order"]
-	}
-  }
-
-// ------------------------------------------------------
-
-// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
-
-// ------------------------------------------------------
-
-export type User = {
-	__typename?: "User",
-	id:number,
+		id:number,
 	provider:string,
 	providerId:string,
 	username:string,
 	name:string,
-	orders?:Order[],
-	created_at:DateTime,
-	updated_at:DateTime
-}
-
-/** A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format. */
-export type DateTime = any
-
-export type Order = {
-	__typename?: "Order",
-	id:number,
+	orders?:ModelTypes["Order"][],
+	created_at:ModelTypes["DateTime"],
+	updated_at:ModelTypes["DateTime"]
+};
+	/** A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format. */
+["DateTime"]:any;
+	["Order"]: {
+		id:number,
 	alias:string,
-	user:User,
-	thing:Thing,
-	created_at:DateTime,
-	updated_at:DateTime
-}
-
-export type Thing = {
-	__typename?: "Thing",
-	id:number,
+	user:ModelTypes["User"],
+	thing:ModelTypes["Thing"],
+	created_at:ModelTypes["DateTime"],
+	updated_at:ModelTypes["DateTime"]
+};
+	["Thing"]: {
+		id:number,
 	name:string,
-	orders?:Order[],
-	created_at:DateTime,
-	updated_at:DateTime
+	orders?:ModelTypes["Order"][],
+	created_at:ModelTypes["DateTime"],
+	updated_at:ModelTypes["DateTime"]
+};
+	["Query"]: {
+		users:ModelTypes["User"][],
+	whoAmI:ModelTypes["User"],
+	things:ModelTypes["Thing"][],
+	orders:ModelTypes["Order"][]
+};
+	["Mutation"]: {
+		createOrder:ModelTypes["Order"]
 }
+    }
 
-export type Query = {
-	__typename?: "Query",
-	users:User[],
-	whoAmI:User,
-	things:Thing[],
-	orders:Order[]
+export type GraphQLTypes = {
+    // ------------------------------------------------------;
+	// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY);
+	// ------------------------------------------------------;
+	["User"]: {
+	__typename: "User",
+	id: number,
+	provider: string,
+	providerId: string,
+	username: string,
+	name: string,
+	orders?: Array<GraphQLTypes["Order"]>,
+	created_at: GraphQLTypes["DateTime"],
+	updated_at: GraphQLTypes["DateTime"]
+};
+	/** A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format. */
+["DateTime"]:any;
+	["Order"]: {
+	__typename: "Order",
+	id: number,
+	alias: string,
+	user: GraphQLTypes["User"],
+	thing: GraphQLTypes["Thing"],
+	created_at: GraphQLTypes["DateTime"],
+	updated_at: GraphQLTypes["DateTime"]
+};
+	["Thing"]: {
+	__typename: "Thing",
+	id: number,
+	name: string,
+	orders?: Array<GraphQLTypes["Order"]>,
+	created_at: GraphQLTypes["DateTime"],
+	updated_at: GraphQLTypes["DateTime"]
+};
+	["Query"]: {
+	__typename: "Query",
+	users: Array<GraphQLTypes["User"]>,
+	whoAmI: GraphQLTypes["User"],
+	things: Array<GraphQLTypes["Thing"]>,
+	orders: Array<GraphQLTypes["Order"]>
+};
+	["Mutation"]: {
+	__typename: "Mutation",
+	createOrder: GraphQLTypes["Order"]
 }
-
-export type Mutation = {
-	__typename?: "Mutation",
-	createOrder:Order
-}
-
-export const AllTypesProps: Record<string,any> = {
-	DateTime: "String",
-	Mutation:{
-		createOrder:{
-			alias:{
-				type:"String",
-				array:false,
-				arrayRequired:false,
-				required:true
-			},
-			thingName:{
-				type:"String",
-				array:false,
-				arrayRequired:false,
-				required:true
-			}
-		}
-	}
-}
-
-export const ReturnTypes: Record<string,any> = {
-	User:{
-		id:"Float",
-		provider:"String",
-		providerId:"String",
-		username:"String",
-		name:"String",
-		orders:"Order",
-		created_at:"DateTime",
-		updated_at:"DateTime"
-	},
-	Order:{
-		id:"Float",
-		alias:"String",
-		user:"User",
-		thing:"Thing",
-		created_at:"DateTime",
-		updated_at:"DateTime"
-	},
-	Thing:{
-		id:"Float",
-		name:"String",
-		orders:"Order",
-		created_at:"DateTime",
-		updated_at:"DateTime"
-	},
-	Query:{
-		users:"User",
-		whoAmI:"User",
-		things:"Thing",
-		orders:"Order"
-	},
-	Mutation:{
-		createOrder:"Order"
-	}
-}
+    }
 
 export class GraphQLError extends Error {
     constructor(public response: GraphQLResponse) {
@@ -208,7 +143,6 @@ export class GraphQLError extends Error {
       return "GraphQL Response Error";
     }
   }
-
 
 
 export type UnwrapPromise<T> = T extends Promise<infer R> ? R : T;
@@ -222,121 +156,86 @@ export type ZeusHook<
   N extends keyof ReturnType<T>
 > = ZeusState<ReturnType<T>[N]>;
 
-type Func<P extends any[], R> = (...args: P) => R;
-type AnyFunc = Func<any, any>;
-
 type WithTypeNameValue<T> = T & {
-  __typename?: true;
+  __typename?: boolean;
 };
-
 type AliasType<T> = WithTypeNameValue<T> & {
   __alias?: Record<string, WithTypeNameValue<T>>;
 };
-
-type NotUndefined<T> = T extends undefined ? never : T;
-
-export type ResolverType<F> = NotUndefined<F extends [infer ARGS, any] ? ARGS : undefined>;
-
-export type ArgsType<F extends AnyFunc> = F extends Func<infer P, any> ? P : never;
-
-interface GraphQLResponse {
+export interface GraphQLResponse {
   data?: Record<string, any>;
   errors?: Array<{
     message: string;
   }>;
 }
+type DeepAnify<T> = {
+  [P in keyof T]?: any;
+};
+type IsPayLoad<T> = T extends [any, infer PayLoad] ? PayLoad : T;
+type IsArray<T, U> = T extends Array<infer R> ? InputType<R, U>[] : InputType<T, U>;
+type FlattenArray<T> = T extends Array<infer R> ? R : T;
 
-export type ValuesOf<T> = T[keyof T];
-
-export type MapResolve<SRC, DST> = SRC extends {
-    __interface: infer INTERFACE;
-    __resolve: Record<string, { __typename?: string }> & infer IMPLEMENTORS;
-  }
-  ?
-  ValuesOf<{
-    [k in (keyof SRC['__resolve'] & keyof DST)]: ({
-      [rk in (keyof SRC['__resolve'][k] & keyof DST[k])]: LastMapTypeSRCResolver<SRC['__resolve'][k][rk], DST[k][rk]>
-    } & {
-      __typename: SRC['__resolve'][k]['__typename']
-    })
-  }>
-  :
-  never;
-
-export type MapInterface<SRC, DST> = SRC extends {
-    __interface: infer INTERFACE;
-    __resolve: Record<string, { __typename?: string }> & infer IMPLEMENTORS;
-  }
-  ?
-  (MapResolve<SRC, DST> extends never ? {} : MapResolve<SRC, DST>) & {
-  [k in (keyof SRC['__interface'] & keyof DST)]: LastMapTypeSRCResolver<SRC['__interface'][k], DST[k]>
-} : never;
-
-export type ValueToUnion<T> = T extends {
-  __typename: infer R;
-}
+type IsInterfaced<SRC extends DeepAnify<DST>, DST> = FlattenArray<SRC> extends ZEUS_INTERFACES | ZEUS_UNIONS
   ? {
-      [P in keyof Omit<T, '__typename'>]: T[P] & {
-        __typename: R;
-      };
-    }
-  : T;
-
-export type ObjectToUnion<T> = {
-  [P in keyof T]: T[P];
-}[keyof T];
-
-type Anify<T> = { [P in keyof T]?: any };
-
-
-type LastMapTypeSRCResolver<SRC, DST> = SRC extends undefined
-  ? undefined
-  : SRC extends Array<infer AR>
-  ? LastMapTypeSRCResolver<AR, DST>[]
-  : SRC extends { __interface: any; __resolve: any }
-  ? MapInterface<SRC, DST>
-  : SRC extends { __union: any; __resolve: infer RESOLVE }
-  ? ObjectToUnion<MapType<RESOLVE, ValueToUnion<DST>>>
-  : DST extends boolean
-  ? SRC
-  : MapType<SRC, DST>;
-
-export type MapType<SRC extends Anify<DST>, DST> = DST extends boolean
-  ? SRC
-  : DST extends {
-      __alias: any;
-    }
-  ? {
-      [A in keyof DST["__alias"]]: Required<SRC> extends Anify<
-        DST["__alias"][A]
-      >
-        ? MapType<Required<SRC>, DST["__alias"][A]>
+      [P in keyof SRC]: SRC[P] extends '__union' & infer R
+        ? P extends keyof DST
+          ? IsArray<R, '__typename' extends keyof DST ? DST[P] & { __typename: true } : DST[P]>
+          : {}
         : never;
-    } &
+    }[keyof DST] &
       {
-        [Key in keyof Omit<DST, "__alias">]: DST[Key] extends [
-          any,
-          infer PAYLOAD
-        ]
-          ? LastMapTypeSRCResolver<SRC[Key], PAYLOAD>
-          : LastMapTypeSRCResolver<SRC[Key], DST[Key]>;
+        [P in keyof Omit<
+          Pick<
+            SRC,
+            {
+              [P in keyof DST]: SRC[P] extends '__union' & infer R ? never : P;
+            }[keyof DST]
+          >,
+          '__typename'
+        >]: IsPayLoad<DST[P]> extends boolean ? SRC[P] : IsArray<SRC[P], DST[P]>;
       }
   : {
-      [Key in keyof DST]: DST[Key] extends [any, infer PAYLOAD]
-        ? LastMapTypeSRCResolver<SRC[Key], PAYLOAD>
-        : LastMapTypeSRCResolver<SRC[Key], DST[Key]>;
+      [P in keyof Pick<SRC, keyof DST>]: IsPayLoad<DST[P]> extends boolean ? SRC[P] : IsArray<SRC[P], DST[P]>;
     };
 
-type OperationToGraphQL<V, T> = <Z extends V>(o: Z | V, variables?: Record<string, any>) => Promise<MapType<T, Z>>;
-
-type CastToGraphQL<V, T> = (
-  resultOfYourQuery: any
-) => <Z extends V>(o: Z | V) => MapType<T, Z>;
-
-type fetchOptions = ArgsType<typeof fetch>;
-
+export type MapType<SRC, DST> = SRC extends DeepAnify<DST> ? IsInterfaced<SRC, DST> : never;
+export type InputType<SRC, DST> = IsPayLoad<DST> extends { __alias: infer R }
+  ? {
+      [P in keyof R]: MapType<SRC, R[P]>;
+    } &
+      MapType<SRC, Omit<IsPayLoad<DST>, '__alias'>>
+  : MapType<SRC, IsPayLoad<DST>>;
+type Func<P extends any[], R> = (...args: P) => R;
+type AnyFunc = Func<any, any>;
+export type ArgsType<F extends AnyFunc> = F extends Func<infer P, any> ? P : never;
+export type OperationOptions = {
+  variables?: Record<string, any>;
+  operationName?: string;
+};
+export type SubscriptionToGraphQL<Z, T> = {
+  ws: WebSocket;
+  on: (fn: (args: InputType<T, Z>) => void) => void;
+  off: (fn: (e: { data?: InputType<T, Z>; code?: number; reason?: string; message?: string }) => void) => void;
+  error: (fn: (e: { data?: InputType<T, Z>; errors?: string[] }) => void) => void;
+  open: () => void;
+};
 export type SelectionFunction<V> = <T>(t: T | V) => T;
-type FetchFunction = (query: string, variables?: Record<string, any>) => Promise<any>;
+export type fetchOptions = ArgsType<typeof fetch>;
+type websocketOptions = typeof WebSocket extends new (
+  ...args: infer R
+) => WebSocket
+  ? R
+  : never;
+export type chainOptions =
+  | [fetchOptions[0], fetchOptions[1] & {websocket?: websocketOptions}]
+  | [fetchOptions[0]];
+export type FetchFunction = (
+  query: string,
+  variables?: Record<string, any>,
+) => Promise<any>;
+export type SubscriptionFunction = (query: string) => any;
+type NotUndefined<T> = T extends undefined ? never : T;
+export type ResolverType<F> = NotUndefined<F extends [infer ARGS, any] ? ARGS : undefined>;
 
 
 
@@ -498,9 +397,9 @@ const traverseToSeekArrays = (parent: string[], a?: any): string => {
     if (typeof a === 'object') {
       Object.keys(a)
         .filter((k) => typeof a[k] !== 'undefined')
-        .map((k) => {
+        .forEach((k) => {
         if (k === '__alias') {
-          Object.keys(a[k]).map((aliasKey) => {
+          Object.keys(a[k]).forEach((aliasKey) => {
             const aliasOperations = a[k][aliasKey];
             const aliasOperationName = Object.keys(aliasOperations)[0];
             const aliasOperation = aliasOperations[aliasOperationName];
@@ -549,17 +448,24 @@ const inspectVariables = (query: string) => {
 };
 
 
-const queryConstruct = (t: 'query' | 'mutation' | 'subscription', tName: string) => (o: Record<any, any>) =>
-  `${t.toLowerCase()}${inspectVariables(buildQuery(tName, o))}`;
+export const queryConstruct = (t: 'query' | 'mutation' | 'subscription', tName: string, operationName?: string) => (o: Record<any, any>) =>
+  `${t.toLowerCase()}${operationName ? ' ' + operationName : ''}${inspectVariables(buildQuery(tName, o))}`;
   
 
-const fullChainConstruct = (fn: FetchFunction) => (t: 'query' | 'mutation' | 'subscription', tName: string) => (
+export const fullChainConstruct = (fn: FetchFunction) => (t: 'query' | 'mutation' | 'subscription', tName: string) => (
   o: Record<any, any>,
-  variables?: Record<string, any>,
-) => fn(queryConstruct(t, tName)(o), variables).then((r:any) => { 
+  options?: OperationOptions,
+) => fn(queryConstruct(t, tName, options?.operationName)(o), options?.variables).then((r:any) => { 
   seekForAliases(r)
   return r
 });
+
+
+export const fullSubscriptionConstruct = (fn: SubscriptionFunction) => (
+  t: 'query' | 'mutation' | 'subscription',
+  tName: string,
+) => (o: Record<any, any>, options?: OperationOptions) =>
+  fn(queryConstruct(t, tName, options?.operationName)(o));
 
 
 const seekForAliases = (response: any) => {
@@ -595,6 +501,20 @@ const seekForAliases = (response: any) => {
 export const $ = (t: TemplateStringsArray): any => `ZEUS_VAR$${t.join('')}`;
 
 
+export const resolverFor = <
+  X,
+  T extends keyof ValueTypes,
+  Z extends keyof ValueTypes[T],
+>(
+  type: T,
+  field: Z,
+  fn: (
+    args: Required<ValueTypes[T]>[Z] extends [infer Input, any] ? Input : any,
+    source: any,
+  ) => Z extends keyof ModelTypes[T] ? ModelTypes[T][Z] | Promise<ModelTypes[T][Z]> | X : any,
+) => fn as (args?: any,source?: any) => any;
+
+
 const handleFetchResponse = (
   response: Parameters<Extract<Parameters<ReturnType<typeof fetch>['then']>[0], Function>>[0]
 ): Promise<GraphQLResponse> => {
@@ -609,7 +529,7 @@ const handleFetchResponse = (
   return response.json();
 };
 
-const apiFetch = (options: fetchOptions) => (query: string, variables: Record<string, any> = {}) => {
+export const apiFetch = (options: fetchOptions) => (query: string, variables: Record<string, any> = {}) => {
     let fetchFunction = fetch;
     let queryString = query;
     let fetchOptions = options[1] || {};
@@ -642,44 +562,90 @@ const apiFetch = (options: fetchOptions) => (query: string, variables: Record<st
   };
   
 
+export const apiSubscription = (options: chainOptions) => (
+    query: string,
+  ) => {
+    try {
+      const queryString = options[0] + '?query=' + encodeURIComponent(query);
+      const wsString = queryString.replace('http', 'ws');
+      const host = (options.length > 1 && options[1]?.websocket?.[0]) || wsString;
+      const webSocketOptions = options[1]?.websocket || [host];
+      const ws = new WebSocket(...webSocketOptions);
+      return {
+        ws,
+        on: (e: (args: any) => void) => {
+          ws.onmessage = (event:any) => {
+            if(event.data){
+              const parsed = JSON.parse(event.data)
+              const data = parsed.data
+              if (data) {
+                seekForAliases(data);
+              }
+              return e(data);
+            }
+          };
+        },
+        off: (e: (args: any) => void) => {
+          ws.onclose = e;
+        },
+        error: (e: (args: any) => void) => {
+          ws.onerror = e;
+        },
+        open: (e: () => void) => {
+          ws.onopen = e;
+        },
+      };
+    } catch {
+      throw new Error('No websockets implemented');
+    }
+  };
 
-export const Thunder = (fn: FetchFunction) => ({
-  query: ((o: any, variables) =>
-    fullChainConstruct(fn)('query', 'Query')(o, variables).then(
-      (response: any) => response
-    )) as OperationToGraphQL<ValueTypes["Query"],Query>,
-mutation: ((o: any, variables) =>
-    fullChainConstruct(fn)('mutation', 'Mutation')(o, variables).then(
-      (response: any) => response
-    )) as OperationToGraphQL<ValueTypes["Mutation"],Mutation>
-});
 
-export const Chain = (...options: fetchOptions) => ({
-  query: ((o: any, variables) =>
-    fullChainConstruct(apiFetch(options))('query', 'Query')(o, variables).then(
-      (response: any) => response
-    )) as OperationToGraphQL<ValueTypes["Query"],Query>,
-mutation: ((o: any, variables) =>
-    fullChainConstruct(apiFetch(options))('mutation', 'Mutation')(o, variables).then(
-      (response: any) => response
-    )) as OperationToGraphQL<ValueTypes["Mutation"],Mutation>
-});
-export const Zeus = {
-  query: (o:ValueTypes["Query"]) => queryConstruct('query', 'Query')(o),
-mutation: (o:ValueTypes["Mutation"]) => queryConstruct('mutation', 'Mutation')(o)
-};
-export const Cast = {
-  query: ((o: any) => (_: any) => o) as CastToGraphQL<
-  ValueTypes["Query"],
-  Query
->,
-mutation: ((o: any) => (_: any) => o) as CastToGraphQL<
-  ValueTypes["Mutation"],
-  Mutation
->
-};
-export const Selectors = {
-  query: ZeusSelect<ValueTypes["Query"]>(),
-mutation: ZeusSelect<ValueTypes["Mutation"]>()
-};
+
+const allOperations = {
+    "query": "Query",
+    "mutation": "Mutation"
+}
+
+export type GenericOperation<O> = O extends 'query'
+  ? "Query"
+  : O extends 'mutation'
+  ? "Mutation"
+  : never
+
+export const Thunder = (fn: FetchFunction) => <
+  O extends 'query' | 'mutation',
+  R extends keyof ValueTypes = GenericOperation<O>
+>(
+  operation: O,
+) => <Z extends ValueTypes[R]>(o: Z | ValueTypes[R], ops?: OperationOptions) =>
+  fullChainConstruct(fn)(operation, allOperations[operation])(o as any, ops) as Promise<InputType<GraphQLTypes[R], Z>>;
+
+export const Chain = (...options: chainOptions) => Thunder(apiFetch(options));  
+  
+export const SubscriptionThunder = (fn: SubscriptionFunction) => <
+  O extends 'query' | 'mutation',
+  R extends keyof ValueTypes = GenericOperation<O>
+>(
+  operation: O,
+) => <Z extends ValueTypes[R]>(
+  o: Z | ValueTypes[R],
+  ops?: OperationOptions
+)=>
+  fullSubscriptionConstruct(fn)(operation, allOperations[operation])(
+    o as any,
+    ops,
+  ) as SubscriptionToGraphQL<Z, GraphQLTypes[R]>;
+
+export const Subscription = (...options: chainOptions) => SubscriptionThunder(apiSubscription(options));
+export const Zeus = <
+  Z extends ValueTypes[R],
+  O extends 'query' | 'mutation',
+  R extends keyof ValueTypes = GenericOperation<O>
+>(
+  operation: O,
+  o: Z | ValueTypes[R],
+  operationName?: string,
+) => queryConstruct(operation, allOperations[operation], operationName)(o as any);
+export const Selector = <T extends keyof ValueTypes>(key: T) => ZeusSelect<ValueTypes[T]>();
   
