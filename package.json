@@ -22,7 +22,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json --setupFiles dotenv-flow/config",
     "console": "ts-node -r tsconfig-paths/register src/server/console.ts",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
-    "client:generate:schema": "zeus src/schema.gql src/client/app/types --ts"
+    "client:generate:schema": "zeus src/schema.gql src/client/app/types --typescript"
   },
   "dependencies": {
     "@apollo/client": "^3.3.16",
@@ -80,7 +80,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "faker": "^5.4.0",
     "fishery": "^1.2.0",
-    "graphql-zeus": "2.8.6",
+    "graphql-zeus": "^4.0.4",
     "jest": "^26.6.3",
     "prettier": "^2.1.2",
     "supertest": "^6.0.0",
