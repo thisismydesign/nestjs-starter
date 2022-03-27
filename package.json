@@ -22,7 +22,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json --setupFiles dotenv-flow/config",
     "console": "ts-node -r tsconfig-paths/register src/server/console.ts",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
-    "client:generate:schema": "zeus src/schema.gql src/client/app/types --typescript"
+    "client:generate:schema": "zeus src/schema.gql src/client/app/types --typescript --apollo"
   },
   "dependencies": {
     "@apollo/client": "^3.3.16",
