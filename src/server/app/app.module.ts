@@ -4,7 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConsoleModule } from 'nestjs-console';
 import { join } from 'path';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-
+import { ApolloDriver } from '@nestjs/apollo';
 import { SeedService } from 'src/server/console/seed.service';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -19,6 +19,7 @@ import { OrdersModule } from './orders/orders.module';
       isGlobal: true,
     }),
     GraphQLModule.forRoot({
+      driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
     TypeOrmModule.forRootAsync({
