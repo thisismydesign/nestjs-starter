@@ -100,8 +100,8 @@ jobs:
     - name: Pull images
       run: docker-compose pull
 
-    - name: Init test DB
-      run: docker-compose run db psql -U postgres -c 'create database test;'
+    # - name: Init test DB
+    #   run: docker-compose run db psql -U postgres -c 'create database test;'
 
     - name: Run tests
       run: docker-compose run web yarn test
@@ -129,8 +129,8 @@ jobs:
     - name: Pull images
       run: docker-compose pull
 
-    - name: Init test DB
-      run: docker-compose run db psql -U postgres -c 'create database test;'
+    # - name: Init test DB
+    #   run: docker-compose run db psql -U postgres -c 'create database test;'
 
     - name: Run e2e tests
       run: docker-compose run web yarn test:e2e
