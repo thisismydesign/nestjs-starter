@@ -9,6 +9,7 @@ env:
   node_version: "14.x"
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  HEROKU_APP_NAME: nestjs-starter-thisismydesign
 
 concurrency:
   group: ${{ github.ref }}
@@ -139,7 +140,6 @@ jobs:
     needs: [lint, test, e2e]
     env:
       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      HEROKU_APP_NAME: nestjs-starter-thisismydesign
 
     steps:
       - uses: actions/checkout@v2
@@ -156,14 +156,14 @@ jobs:
       - name: Docker build
         uses: docker/build-push-action@v2
         with:
-          tags: registry.heroku.com/$HEROKU_APP_NAME/web
+          tags: registry.heroku.com/${{ env.HEROKU_APP_NAME }}/web
           file: Dockerfile.prod
           load: true
           cache-from: type=gha
           cache-to: type=gha
 
       - name: Docker push
-        run: docker push registry.heroku.com/$HEROKU_APP_NAME/web
+        run: docker push registry.heroku.com/${{ env.HEROKU_APP_NAME }}/web
 
       - name: Run release command
-        run: heroku container:release web -a $HEROKU_APP_NAME
+        run: heroku container:release web -a ${{ env.HEROKU_APP_NAME }}
