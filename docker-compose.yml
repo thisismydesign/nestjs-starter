@@ -4,7 +4,8 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile
+    image: ${NESTJS_STARTER_IMAGE:-nestjs-starter:local}
+    entrypoint: scripts/web-docker-entrypoint.sh
     command: yarn start:dev
     ports:
       - "3000:3000"
@@ -14,6 +15,9 @@ services:
       - .:/app
 
   db:
-    image: postgres:alpine
+    image: postgres:13.4-alpine
     environment:
+      # Login without password
       POSTGRES_HOST_AUTH_METHOD: "trust"
+      # Auto-create test DB
+      POSTGRES_DB: test
