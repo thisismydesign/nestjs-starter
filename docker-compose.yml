@@ -17,6 +17,7 @@ services:
   db:
     image: postgres:13.4-alpine
     environment:
+      # Login without password
       POSTGRES_HOST_AUTH_METHOD: "trust"
-      POSTGRES_USER: postgres
+      # Auto-create test DB
       POSTGRES_DB: test
