@@ -4,7 +4,6 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile
     image: ${NESTJS_STARTER_IMAGE:-nestjs-starter:local}
     entrypoint: scripts/web-docker-entrypoint.sh
     command: yarn start:dev
