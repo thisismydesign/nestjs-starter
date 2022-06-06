@@ -136,7 +136,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    # if: github.ref == 'refs/heads/master'
+    # if: github.ref == 'refs/heads/master' && github.repository_owner == 'thisismydesign'
     needs: [lint, test, e2e]
     env:
       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
