@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-cp .env.sample .env
+cp .env.example .env
