@@ -63,7 +63,7 @@ jobs:
       with:
         registry: ${{ env.REGISTRY }}
         username: ${{ github.actor }}
-        password: ${{ secrets.PACKAGE_ACCESS_TOKEN }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Init
       run: ./scripts/docker_setup_init.sh
@@ -89,7 +89,7 @@ jobs:
       with:
         registry: ${{ env.REGISTRY }}
         username: ${{ github.actor }}
-        password: ${{ secrets.PACKAGE_ACCESS_TOKEN }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Init
       run: ./scripts/docker_setup_init.sh
@@ -115,7 +115,7 @@ jobs:
       with:
         registry: ${{ env.REGISTRY }}
         username: ${{ github.actor }}
-        password: ${{ secrets.PACKAGE_ACCESS_TOKEN }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Init
       run: ./scripts/docker_setup_init.sh
