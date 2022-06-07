@@ -155,6 +155,8 @@ jobs:
   test-e2e:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      DUMMY_MOUNT: .:/dummy
     needs: [build-and-upload-docker-image]
     env:
       NESTJS_STARTER_IMAGE: ${{ needs.build-and-upload-docker-image.outputs.docker-tag }}
