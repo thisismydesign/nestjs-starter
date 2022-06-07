@@ -232,7 +232,7 @@ jobs:
           push: true
           tags: registry.heroku.com/${{ env.HEROKU_STAGING_APP_NAME }}/web,registry.heroku.com/${{ env.HEROKU_PRODUCTION_APP_NAME }}/web
           file: Dockerfile.prod
-          load: true
+          # load: true
           cache-from: type=gha
           cache-to: type=gha
 
