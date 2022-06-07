@@ -12,7 +12,7 @@ services:
     depends_on:
       - db
     volumes:
-      - .:/app
+      - ${DUMMY_MOUNT:-.:/app}
 
   db:
     image: postgres:13.4-alpine
