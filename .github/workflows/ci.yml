@@ -126,7 +126,7 @@ jobs:
     - name: Run tests
       run: docker-compose run web yarn test
 
-  e2e:
+  test-request:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     needs: [build-and-upload-docker-image]
@@ -152,11 +152,63 @@ jobs:
     - name: Run e2e tests
       run: docker-compose run web yarn test:e2e
 
+  test-e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [build-and-upload-docker-image]
+    env:
+      NESTJS_STARTER_IMAGE: ${{ needs.build-and-upload-docker-image.outputs.docker-tag }}
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Log in to the Container registry
+      uses: docker/login-action@v1
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Init
+      run: ./scripts/docker_setup_init.sh
+
+    - name: Pull images
+      run: docker-compose pull
+
+    - name: Docker up
+      run: docker-compose up --detach web
+
+    - name: Cypress run
+      uses: cypress-io/github-action@v4
+      with:
+        wait-on: 'http://localhost:3000'
+        wait-on-timeout: 120
+
+    - name: Save Cypress artifacts
+      uses: actions/upload-artifact@v2
+      if: always()
+      with:
+        name: cypress-artifacts
+        path: |
+          cypress/videos
+          cypress/screenshots
+
+    - name: Docker setup logs
+      if: always()
+      run: docker-compose logs --timestamps --tail="all" > docker-logs.txt
+
+    - name: Save log artifacts
+      uses: actions/upload-artifact@v2
+      if: always()
+      with:
+        name: log-artifacts
+        path: docker-logs.txt
+
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     if: github.ref == 'refs/heads/master' && github.repository_owner == 'thisismydesign'
-    needs: [lint, test, e2e]
+    needs: [lint, test, test-request, test-e2e]
     env:
       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
 
