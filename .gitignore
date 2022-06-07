@@ -400,3 +400,6 @@ dist
 notes.md
 
 .next
+
+cypress/videos
+cypress/screenshots
