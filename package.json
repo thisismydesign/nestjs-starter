@@ -22,7 +22,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json --setupFiles dotenv-flow/config",
     "console": "ts-node -r tsconfig-paths/register src/server/console.ts",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
-    "client:generate:schema": "zeus src/schema.gql src/client/app/types --typescript --apollo"
+    "client:generate:schema": "zeus src/schema.gql src/client/app/types --typescript --apollo",
+    "cy": "cypress"
   },
   "dependencies": {
     "@apollo/client": "^3.3.16",
@@ -74,6 +75,7 @@
     "@types/supertest": "^2.0.10",
     "@typescript-eslint/eslint-plugin": "^4.6.1",
     "@typescript-eslint/parser": "^4.6.1",
+    "cypress": "^10.0.3",
     "dotenv-flow": "^3.2.0",
     "eslint": "^7.12.1",
     "eslint-config-prettier": "^6.15.0",
