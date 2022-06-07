@@ -158,7 +158,7 @@ jobs:
     needs: [build-and-upload-docker-image]
     env:
       NESTJS_STARTER_IMAGE: ${{ needs.build-and-upload-docker-image.outputs.docker-tag }}
-      DUMMY_MOUNT: .:/dummy
+      # DUMMY_MOUNT: .:/dummy
 
     steps:
     - uses: actions/checkout@v2
@@ -177,13 +177,14 @@ jobs:
       run: docker-compose pull
 
     - name: Docker up
-      run: docker-compose up --detach web
+      run: docker-compose up --detach
 
     - name: Cypress run
       uses: cypress-io/github-action@v4
       with:
         wait-on: 'http://localhost:3000'
         wait-on-timeout: 120
+        install: false
 
     - name: Save Cypress artifacts
       uses: actions/upload-artifact@v2
