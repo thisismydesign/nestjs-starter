@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Init
-        run: ./script/docker_setup_init.sh
+        run: ./scripts/docker_setup_init.sh
 
       - name: Pull images
         run: docker-compose pull db
