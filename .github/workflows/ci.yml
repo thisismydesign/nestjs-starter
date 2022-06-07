@@ -16,6 +16,25 @@ concurrency:
   cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
 
 jobs:
+  verify-docker-setup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Init
+        run: ./script/docker_setup_init.sh
+
+      - name: Pull images
+        run: docker-compose pull db
+
+      - name: Docker build
+        run: docker-compose build web
+
+      - name: Docker init
+        run: docker-compose run --rm web sh -c 'exit 0'
+
   build-and-upload-docker-image:
     runs-on: ubuntu-latest
     timeout-minutes: 10
