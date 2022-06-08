@@ -9,7 +9,8 @@ env:
   node_version: "14.x"
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  HEROKU_APP_NAME: nestjs-starter-thisismydesign
+  HEROKU_STAGING_APP_NAME: nestjs-starter-staging
+  HEROKU_PRODUCTION_APP_NAME: nestjs-starter-production
 
 concurrency:
   group: ${{ github.ref }}
@@ -205,7 +206,7 @@ jobs:
         name: log-artifacts
         path: docker-logs.txt
 
-  deploy:
+  build-and-push-image-to-heroku:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     if: github.ref == 'refs/heads/master' && github.repository_owner == 'thisismydesign'
@@ -228,14 +229,80 @@ jobs:
       - name: Docker build
         uses: docker/build-push-action@v2
         with:
-          tags: registry.heroku.com/${{ env.HEROKU_APP_NAME }}/web
+          push: true
+          tags: registry.heroku.com/${{ env.HEROKU_STAGING_APP_NAME }}/web,registry.heroku.com/${{ env.HEROKU_PRODUCTION_APP_NAME }}/web
           file: Dockerfile.prod
-          load: true
           cache-from: type=gha
           cache-to: type=gha
 
-      - name: Docker push
-        run: docker push registry.heroku.com/${{ env.HEROKU_APP_NAME }}/web
+  deploy-staging:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: github.ref == 'refs/heads/master' && github.repository_owner == 'thisismydesign'
+    needs: [build-and-push-image-to-heroku]
+    env:
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
 
+    steps:
       - name: Run release command
-        run: heroku container:release web -a ${{ env.HEROKU_APP_NAME }}
+        run: heroku container:release web -a ${{ env.HEROKU_STAGING_APP_NAME }}
+
+  test-e2e-staging:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [deploy-staging]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Cypress run
+      uses: cypress-io/github-action@v4
+      with:
+        wait-on: 'https://nestjs-starter-staging.herokuapp.com'
+        wait-on-timeout: 120
+        config-file: cypress.staging.config.ts
+
+    - name: Save Cypress artifacts
+      uses: actions/upload-artifact@v2
+      if: always()
+      with:
+        name: cypress-artifacts-staging
+        path: |
+          cypress/videos
+          cypress/screenshots
+
+  deploy-production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: github.ref == 'refs/heads/master' && github.repository_owner == 'thisismydesign'
+    needs: [build-and-push-image-to-heroku, test-e2e-staging]
+    env:
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+
+    steps:
+      - name: Run release command
+        run: heroku container:release web -a ${{ env.HEROKU_PRODUCTION_APP_NAME }}
+
+  test-e2e-production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [deploy-production]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Cypress run
+      uses: cypress-io/github-action@v4
+      with:
+        wait-on: 'https://nestjs-starter-production.herokuapp.com'
+        wait-on-timeout: 120
+        config-file: cypress.production.config.ts
+
+    - name: Save Cypress artifacts
+      uses: actions/upload-artifact@v2
+      if: always()
+      with:
+        name: cypress-artifacts-production
+        path: |
+          cypress/videos
+          cypress/screenshots

@@ -8,6 +8,8 @@
   "include": [
     "**/*.ts",
     "../cypress.config.ts",
-    "../cypress.docker.config.ts"
+    "../cypress.docker.config.ts",
+    "../cypress.staging.config.ts",
+    "../cypress.production.config.ts"
   ]
 }
