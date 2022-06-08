@@ -150,8 +150,8 @@ jobs:
     - name: Pull images
       run: docker-compose pull
 
-    - name: Run e2e tests
-      run: docker-compose run web yarn test:e2e
+    - name: Run request tests
+      run: docker-compose run web yarn test:request
 
   test-e2e:
     runs-on: ubuntu-latest
