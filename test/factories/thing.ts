@@ -1,5 +1,5 @@
 import { Factory } from 'fishery';
-import * as faker from 'faker';
+import { faker } from '@faker-js/faker';
 
 import { CreateThingDto } from 'src/server/app/things/dto/create-thing.dto';
 
