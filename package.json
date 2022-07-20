@@ -80,7 +80,7 @@
     "eslint": "^7.12.1",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.4.1",
-    "fishery": "^1.2.0",
+    "fishery": "^2.2.2",
     "graphql-zeus": "^4.0.4",
     "jest": "^26.6.3",
     "prettier": "^2.6.2",
