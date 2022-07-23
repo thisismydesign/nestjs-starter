@@ -13,5 +13,5 @@ jobs:
         run: gh pr merge --auto --merge "$PR_URL"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
-          # PAT is required instead of GITHUB_TOKEN to trigger build after merge
-          GH_TOKEN: ${{secrets.PAT}}
+          # Using GITHUB_TOKEN will not trigger a build after merge
+          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
