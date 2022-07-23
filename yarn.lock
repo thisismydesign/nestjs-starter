@@ -4718,10 +4718,10 @@ graphql-extensions@^0.13.0:
     apollo-server-env "^3.0.0"
     apollo-server-types "^0.7.0"
 
-graphql-js-tree@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/graphql-js-tree/-/graphql-js-tree-0.0.3.tgz#280a9e7a6acc951567470daafc904624cfa21d62"
-  integrity sha512-X/AhG+XRmRHCYQRLEbQxdODF16kE9w0b5lDMLJVSpcQlEum/+QeWuHky9hRGXw1apkREQdEtbZ5QXbr2t8v8/A==
+graphql-js-tree@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/graphql-js-tree/-/graphql-js-tree-0.1.1.tgz#faacf556e785e21992af2a7368fe29b0a6137f03"
+  integrity sha512-mPEqogLPmsoUzCi0WVddPFHBdCAQikwaYPe8kn6/+ft81ziei5qutP+cpquvFU5eBVHCFzx0PH5Khc9kutOkeQ==
   dependencies:
     graphql "^15.4.0"
 
@@ -4772,20 +4772,25 @@ graphql-tools@^8.3.0:
   optionalDependencies:
     "@apollo/client" "~3.2.5 || ~3.3.0 || ~3.4.0 || ~3.5.0 || ~3.6.0"
 
-graphql-zeus@^4.0.4:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/graphql-zeus/-/graphql-zeus-4.0.4.tgz#5d1d262d7f6bfe938877169881bed59f2d325f1e"
-  integrity sha512-M80E3xo19A40VGZjm1I1lFw41SQhAxo+qqavsyg4V974XW2CVCH00HmgHBGMtne5LfEbFgH9yi5Q4XdGjR8GTA==
+graphql-zeus@^5.1.7:
+  version "5.1.7"
+  resolved "https://registry.yarnpkg.com/graphql-zeus/-/graphql-zeus-5.1.7.tgz#5214dece81bf0fe38c4884e909f5bbe7b8606d96"
+  integrity sha512-wRtRzAaGWvsjEIHEPeKr27BzpWyGo7i0hxCn25QsYPYy/AvLB7FGLsbe6a2o1EuUsMZNFKUwbM0r52rejiBYIg==
   dependencies:
     cross-fetch "^3.0.4"
-    graphql "^15.4.0"
-    graphql-js-tree "0.0.3"
+    graphql "^16.5.0"
+    graphql-js-tree "^0.1.1"
     yargs "^16.1.1"
 
 graphql@^15.4.0, graphql@^15.8.0:
   version "15.8.0"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.8.0.tgz#33410e96b012fa3bdb1091cc99a94769db212b38"
   integrity sha512-5gghUc24tP9HRznNpV2+FIoq3xKkj5dTQqf4v0CpdPbFVwFkWoxOM+o+2OC9ZSvjEMTjfmG9QT+gcvggTwW1zw==
+
+graphql@^16.5.0:
+  version "16.5.0"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.5.0.tgz#41b5c1182eaac7f3d47164fb247f61e4dfb69c85"
+  integrity sha512-qbHgh8Ix+j/qY+a/ZcJnFQ+j8ezakqPiHwPiZhV/3PgGlgf96QMBB5/f2rkiC9sgLoy/xvT6TSiaf2nTHJh5iA==
 
 growly@^1.3.0:
   version "1.3.0"
