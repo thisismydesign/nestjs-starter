@@ -98,7 +98,7 @@ describe('OrdersResolver', () => {
       await resolver.createOrder(user, thing.name, alias);
 
       const orderCount = (
-        await ordersService.findAll({ where: { user: user } })
+        await ordersService.findAll({ where: { user: { id: user.id } } })
       ).length;
       expect(orderCount).toEqual(1);
     });
@@ -112,7 +112,7 @@ describe('OrdersResolver', () => {
       await resolver.createOrder(user, thing.name, alias);
 
       const orderCount = (
-        await ordersService.findAll({ where: { user: user } })
+        await ordersService.findAll({ where: { user: { id: user.id } } })
       ).length;
       expect(orderCount).toEqual(1);
     });
