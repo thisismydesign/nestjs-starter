@@ -54,7 +54,11 @@ export class OrdersService {
     });
 
     return this.findOrCreateOne({
-      where: { user: params.user, alias: params.alias, thing: thing },
+      where: {
+        user: { id: params.user.id },
+        alias: params.alias,
+        thing: { id: thing.id },
+      },
     });
   }
 }
