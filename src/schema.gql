@@ -43,5 +43,5 @@ type Query {
 }
 
 type Mutation {
-  createOrder(alias: String!, thingName: String!): Order!
+  createOrder(thingName: String!, alias: String!): Order!
 }
