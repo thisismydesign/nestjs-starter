@@ -2,7 +2,7 @@ import * as request from 'supertest';
 import { Test } from '@nestjs/testing';
 import { AppModule } from 'src/server/app/app.module';
 import { INestApplication } from '@nestjs/common';
-import { getConnection } from 'typeorm';
+import { DataSource } from 'typeorm';
 import * as cookieParser from 'cookie-parser';
 
 import { usersFactory, ordersFactory, thingsFactory } from 'test/factories';
@@ -20,6 +20,7 @@ describe('Application', () => {
   let usersService: UsersService;
   let ordersService: OrdersService;
   let thingsService: ThingsService;
+  let dataSource: DataSource;
 
   beforeAll(async () => {
     const moduleFixture = await Test.createTestingModule({
@@ -34,10 +35,11 @@ describe('Application', () => {
     ordersService = app.get(OrdersService);
     authService = app.get(JwtAuthService);
     thingsService = app.get(ThingsService);
+    dataSource = app.get(DataSource);
   });
 
   beforeEach(async () => {
-    await getConnection().synchronize(true);
+    await dataSource.synchronize(true);
   });
 
   describe('GraphQL', () => {
