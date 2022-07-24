@@ -25,7 +25,7 @@ export class OrdersResolver {
   @Query((_returns) => [Order])
   @UseGuards(GqlAuthGuard)
   orders(@CurrentUser() user: User) {
-    return this.ordersService.findAll({ where: { user: user } });
+    return this.ordersService.findAll({ where: { user: { id: user.id } } });
   }
 
   @ResolveField()

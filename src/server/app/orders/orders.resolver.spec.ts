@@ -1,6 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { getConnection } from 'typeorm';
 import { UsersModule } from '../users/users.module';
 import { UsersService } from '../users/users.service';
 import { OrdersModule } from './orders.module';
@@ -9,6 +8,7 @@ import { OrdersService } from './orders.service';
 import { usersFactory, thingsFactory, ordersFactory } from 'test/factories';
 import { ThingsModule } from '../things/things.module';
 import { ThingsService } from '../things/things.service';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 describe('OrdersResolver', () => {
   let resolver: OrdersResolver;
@@ -20,8 +20,18 @@ describe('OrdersResolver', () => {
   beforeEach(async () => {
     moduleRef = await Test.createTestingModule({
       imports: [
-        TypeOrmModule.forRoot({
-          url: process.env.DATABASE_URL,
+        ConfigModule.forRoot({
+          isGlobal: true,
+        }),
+        TypeOrmModule.forRootAsync({
+          useFactory: async (configService: ConfigService) => ({
+            type: 'postgres',
+            url: configService.get<string>('DATABASE_URL'),
+            autoLoadEntities: true,
+            synchronize: true,
+            dropSchema: true,
+          }),
+          inject: [ConfigService],
         }),
         OrdersModule,
         UsersModule,
@@ -33,8 +43,6 @@ describe('OrdersResolver', () => {
     ordersService = moduleRef.get<OrdersService>(OrdersService);
     usersService = moduleRef.get<UsersService>(UsersService);
     thingsService = moduleRef.get<ThingsService>(ThingsService);
-
-    await getConnection().synchronize(true);
   });
 
   afterEach(async () => {
