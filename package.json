@@ -76,7 +76,7 @@
     "@types/passport-oauth2": "^1.4.10",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
-    "@types/supertest": "^2.0.10",
+    "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",
     "cypress": "^10.0.3",
