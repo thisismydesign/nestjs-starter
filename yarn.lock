@@ -5567,10 +5567,10 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-nestjs-console@^7.0.1:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/nestjs-console/-/nestjs-console-7.0.1.tgz#4d23dcb2ec8e2b99b51fcb449e2c0c1f6842c636"
-  integrity sha512-V99VFWBJ69EdMJj5TrciauBPwI3BmaBDepOKJW3NlmGJlJaD+nKZKENWv7+zcHJEk31b8eL1CFuMnHVFp0X9Fg==
+nestjs-console@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/nestjs-console/-/nestjs-console-8.0.0.tgz#22bf2fd835491c09b7d3c79443a8282547a1fe34"
+  integrity sha512-ColRYRI9aH8/wlbrcFK/AeTAvsLlk0vgNIqL9FivUjo+q63S6AB+vUf7Jx7mQ1oIT2bD4awEOt0qEnkHmxsi4Q==
   dependencies:
     commander "^8.1.0"
     ora "5.4.1"
