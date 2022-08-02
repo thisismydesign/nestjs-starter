@@ -7,7 +7,7 @@ on:
 
 env:
   node_version: "14.x"
-  REGISTRY: localhost:5000 # https://stackoverflow.com/a/57644157/2771889
+  REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
@@ -56,7 +56,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.IMAGE_NAME }}
 
       - name: Build image
         id: docker_build
