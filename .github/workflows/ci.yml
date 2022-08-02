@@ -163,7 +163,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     needs: [build-docker-image]
-    # env:
+    env:
     #   NESTJS_STARTER_IMAGE: ${{ needs.build-and-upload-docker-image.outputs.docker-tag }}
       DUMMY_MOUNT: .:/dummy
 
