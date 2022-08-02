@@ -34,7 +34,7 @@ jobs:
       - name: Docker init
         run: docker-compose run --rm web sh -c 'exit 0'
 
-  build-and-upload-docker-image:
+  build-docker-image:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
@@ -62,11 +62,19 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
+      - name: Cache Docker layers
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
       - name: Build and push
         id: docker_build
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
-          push: true
+          # push: true
           file: Dockerfile.prod
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -77,8 +85,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     needs: [build-and-upload-docker-image]
-    env:
-      NESTJS_STARTER_IMAGE: ${{ needs.build-and-upload-docker-image.outputs.docker-tag }}
+    # env:
+    #   NESTJS_STARTER_IMAGE: ${{ needs.build-and-upload-docker-image.outputs.docker-tag }}
 
     steps:
     - uses: actions/checkout@v2
@@ -103,8 +111,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     needs: [build-and-upload-docker-image]
-    env:
-      NESTJS_STARTER_IMAGE: ${{ needs.build-and-upload-docker-image.outputs.docker-tag }}
+    # env:
+    #   NESTJS_STARTER_IMAGE: ${{ needs.build-and-upload-docker-image.outputs.docker-tag }}
 
     steps:
     - uses: actions/checkout@v2
@@ -129,8 +137,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     needs: [build-and-upload-docker-image]
-    env:
-      NESTJS_STARTER_IMAGE: ${{ needs.build-and-upload-docker-image.outputs.docker-tag }}
+    # env:
+    #   NESTJS_STARTER_IMAGE: ${{ needs.build-and-upload-docker-image.outputs.docker-tag }}
 
     steps:
     - uses: actions/checkout@v2
@@ -155,8 +163,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     needs: [build-and-upload-docker-image]
-    env:
-      NESTJS_STARTER_IMAGE: ${{ needs.build-and-upload-docker-image.outputs.docker-tag }}
+    # env:
+    #   NESTJS_STARTER_IMAGE: ${{ needs.build-and-upload-docker-image.outputs.docker-tag }}
       DUMMY_MOUNT: .:/dummy
 
     steps:
