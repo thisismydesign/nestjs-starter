@@ -81,9 +81,6 @@ jobs:
     - name: Pull images
       run: docker-compose pull
 
-    - name: Show images
-      run: docker image ls -a
-
     - name: Run lint
       run: docker-compose run web yarn lint
 
