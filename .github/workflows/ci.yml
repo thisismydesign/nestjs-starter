@@ -87,7 +87,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         # push: true
-        load: true
+        # load: true
         file: Dockerfile.prod
         tags: ${{ needs.build-docker-image.outputs.docker-tag }}
         cache-from: type=gha
