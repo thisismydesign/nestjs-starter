@@ -44,7 +44,6 @@ jobs:
           images: local/${{ github.repository }}
 
       - name: Build image
-        id: docker_build
         uses: docker/build-push-action@v3
         with:
           file: Dockerfile.prod
@@ -66,7 +65,6 @@ jobs:
       uses: docker/setup-buildx-action@v2
 
     - name: Build image
-      id: docker_build
       uses: docker/build-push-action@v3
       with:
         load: true
@@ -98,7 +96,6 @@ jobs:
       uses: docker/setup-buildx-action@v2
 
     - name: Build image
-      id: docker_build
       uses: docker/build-push-action@v3
       with:
         load: true
@@ -130,7 +127,6 @@ jobs:
       uses: docker/setup-buildx-action@v2
 
     - name: Build image
-      id: docker_build
       uses: docker/build-push-action@v3
       with:
         load: true
@@ -163,7 +159,6 @@ jobs:
       uses: docker/setup-buildx-action@v2
 
     - name: Build image
-      id: docker_build
       uses: docker/build-push-action@v3
       with:
         load: true
