@@ -56,11 +56,11 @@ jobs:
       #     username: ${{ github.actor }}
       #     password: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Extract metadata (tags, labels) for Docker
-      #   id: meta
-      #   uses: docker/metadata-action@v3
-      #   with:
-      #     images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ${{ env.IMAGE_NAME }}
 
       - name: Build image
         id: docker_build
@@ -68,7 +68,8 @@ jobs:
         with:
           # push: true
           file: Dockerfile.prod
-          tags: nestjs-starter:local
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha
 
@@ -76,8 +77,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     needs: [build-docker-image]
-    # env:
-    #   NESTJS_STARTER_IMAGE: ${{ needs.build-and-upload-docker-image.outputs.docker-tag }}
+    env:
+      NESTJS_STARTER_IMAGE: ${{ needs.build-docker-image.outputs.docker-tag }}
 
     steps:
     - uses: actions/checkout@v3
@@ -92,7 +93,7 @@ jobs:
         # push: true
         load: true
         file: Dockerfile.prod
-        tags: nestjs-starter:local
+        tags: ${{ needs.build-docker-image.outputs.docker-tag }}
         cache-from: type=gha
         cache-to: type=gha
 
@@ -108,6 +109,9 @@ jobs:
 
     - name: Pull images
       run: docker-compose pull
+
+    - name: Show images
+      run: docker image ls -a
 
     - name: Run lint
       run: docker-compose run web yarn lint
