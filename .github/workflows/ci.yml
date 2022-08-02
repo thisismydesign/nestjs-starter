@@ -40,8 +40,8 @@ jobs:
     permissions:
       contents: read
       packages: write
-    # outputs:
-    #   docker-tag: ${{ steps.meta.outputs.tags }}
+    outputs:
+      docker-tag: ${{ steps.meta.outputs.tags }}
 
     steps:
       - uses: actions/checkout@v3
