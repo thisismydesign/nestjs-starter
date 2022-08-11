@@ -32,7 +32,7 @@
     "@nestjs/apollo": "^10.0.19",
     "@nestjs/common": "^9.0.8",
     "@nestjs/config": "^2.2.0",
-    "@nestjs/core": "^9.0.8",
+    "@nestjs/core": "^9.0.9",
     "@nestjs/graphql": "^10.0.21",
     "@nestjs/jwt": "^9.0.0",
     "@nestjs/passport": "^9.0.0",
