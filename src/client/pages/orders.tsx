@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NextPage } from 'next';
 import { Request } from 'express';
 
@@ -18,6 +18,10 @@ export async function getServerSideProps({ req }) {
 type Props = ExtractPromiseType<ReturnType<typeof getServerSideProps>>;
 
 const Orders: NextPage<Props['props']> = (props) => {
+  useEffect(() => {
+    window.gtag('event', 'ordersOpened');
+  }, []);
+
   return (
     <div>
       <h1>Orders overview</h1>
