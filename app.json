@@ -34,6 +34,9 @@
     },
     "OAUTH_COGNITO_REGION": {
       "value": "us-east-1"
+    },
+    "NEXT_PUBLIC_GA_MEASUREMENT_ID": {
+      "value": "dummy"
     }
   },
   "addons": [

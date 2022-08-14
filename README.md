@@ -20,6 +20,7 @@ It has
 - Running tasks (e.g. DB seeding) via [nestjs-console](https://github.com/Pop-Code/nestjs-console)
 - Unit and integration testing via Jest
 - Heroku deployment setup
+- Google Analytics 4
 
 ## Usage
 
