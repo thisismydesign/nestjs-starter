@@ -394,7 +394,8 @@ Temporary Items
 
 =======
 # Local
-.env
+.env.*local
+.env.*production
 dist
 
 notes.md

@@ -13,9 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Init
-        run: ./scripts/docker_setup_init.sh
-
       - name: Pull images
         run: docker-compose pull db
 
@@ -73,9 +70,6 @@ jobs:
         cache-from: type=gha
         cache-to: type=gha
 
-    - name: Init
-      run: ./scripts/docker_setup_init.sh
-
     - name: Pull images
       run: docker-compose pull
 
@@ -103,9 +97,6 @@ jobs:
         tags: ${{ needs.build-docker-image.outputs.docker-tag }}
         cache-from: type=gha
         cache-to: type=gha
-
-    - name: Init
-      run: ./scripts/docker_setup_init.sh
 
     - name: Pull images
       run: docker-compose pull
@@ -135,9 +126,6 @@ jobs:
         cache-from: type=gha
         cache-to: type=gha
 
-    - name: Init
-      run: ./scripts/docker_setup_init.sh
-
     - name: Pull images
       run: docker-compose pull
 
@@ -166,9 +154,6 @@ jobs:
         tags: ${{ needs.build-docker-image.outputs.docker-tag }}
         cache-from: type=gha
         cache-to: type=gha
-
-    - name: Init
-      run: ./scripts/docker_setup_init.sh
 
     - name: Pull images
       run: docker-compose pull
