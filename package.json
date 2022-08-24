@@ -43,7 +43,7 @@
     "commander": "^9.4.0",
     "cookie-parser": "^1.4.6",
     "google-auth-library": "^8.4.0",
-    "graphql": "^16.5.0",
+    "graphql": "^16.6.0",
     "nestjs-console": "^8.0.0",
     "next": "^12.2.5",
     "passport": "^0.6.0",
