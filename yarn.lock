@@ -597,6 +597,14 @@
     "@graphql-tools/utils" "8.8.0"
     tslib "^2.4.0"
 
+"@graphql-tools/merge@8.3.4":
+  version "8.3.4"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-8.3.4.tgz#749f710d3a930512e6ca36e3bb053c12e22ef332"
+  integrity sha512-2z1UpHvvI52nQZIYArU+rPq1lOENWetsdb+6vu8yLGyCRP4CpKMBvtmiHkbrlPBO8dItpZ08szXEoaStfJHBxQ==
+  dependencies:
+    "@graphql-tools/utils" "8.10.1"
+    tslib "^2.4.0"
+
 "@graphql-tools/mock@^8.1.2":
   version "8.7.0"
   resolved "https://registry.yarnpkg.com/@graphql-tools/mock/-/mock-8.7.0.tgz#da286596ef05b84165e76cf6f608eeea4109a60c"
@@ -616,6 +624,23 @@
     "@graphql-tools/utils" "8.8.0"
     tslib "^2.4.0"
     value-or-promise "1.0.11"
+
+"@graphql-tools/schema@9.0.2":
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/schema/-/schema-9.0.2.tgz#f00dcd2600c25a2e8d69e3a4ab279ea150aab0c4"
+  integrity sha512-FnBM1PMKQ6y8KlzeFocnEwcGA/IT++z4v+hvvwwXL+IUYDNqmrp9XYNklpQRb/KKSbTtKnQapCWNiVNex7jl+Q==
+  dependencies:
+    "@graphql-tools/merge" "8.3.4"
+    "@graphql-tools/utils" "8.10.1"
+    tslib "^2.4.0"
+    value-or-promise "1.0.11"
+
+"@graphql-tools/utils@8.10.1":
+  version "8.10.1"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.10.1.tgz#3224fe0611c9bb51e6a5c16472ae17afbd6c5465"
+  integrity sha512-UYi/afPvxZ8mz0LjplMxOSmGDPenVS/Q0zJ/6LOyF9yZdJYIDe+J+Qr/I9+rCYQmgBW4BJeRUUc7VoUzZPfZDA==
+  dependencies:
+    tslib "^2.4.0"
 
 "@graphql-tools/utils@8.8.0":
   version "8.8.0"
@@ -992,13 +1017,13 @@
     tslib "2.4.0"
     uuid "8.3.2"
 
-"@nestjs/graphql@^10.0.22":
-  version "10.0.22"
-  resolved "https://registry.yarnpkg.com/@nestjs/graphql/-/graphql-10.0.22.tgz#3ba4190959b53d3b7780892981f2a9e9b1366caf"
-  integrity sha512-nOMtFDZvqrUAc8f5rEen3tPcwyMxpGHoyaFnzV4zK6FH6GzWYyVyfXsTWL0p17j/cUMrQvGU55bR39qXMlLV2Q==
+"@nestjs/graphql@^10.1.0":
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/graphql/-/graphql-10.1.0.tgz#20744d01cef9c5c1930f87dd88fd557763f918b9"
+  integrity sha512-TgpWOTFe1j6MrXg+c6hAbVnDW7zWUQaFLQMuoT5aei4WQ7Q0FTWRX6YypRHGBSInXjMj1KYPkJq8rUvsTxRCQw==
   dependencies:
     "@graphql-tools/merge" "8.3.0"
-    "@graphql-tools/schema" "8.5.0"
+    "@graphql-tools/schema" "9.0.2"
     "@graphql-tools/utils" "8.8.0"
     "@nestjs/mapped-types" "1.1.0"
     chokidar "3.5.3"
