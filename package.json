@@ -29,7 +29,7 @@
     "@apollo/client": "^3.6.9",
     "@apollo/gateway": "^2.1.0",
     "@babel/runtime": "^7.18.9",
-    "@nestjs/apollo": "^10.0.22",
+    "@nestjs/apollo": "^10.1.0",
     "@nestjs/common": "^9.0.11",
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.11",
