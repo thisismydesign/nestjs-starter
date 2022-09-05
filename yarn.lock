@@ -4093,10 +4093,10 @@ graphql-ws@5.5.5:
   resolved "https://registry.yarnpkg.com/graphql-ws/-/graphql-ws-5.5.5.tgz#f375486d3f196e2a2527b503644693ae3a8670a9"
   integrity sha512-hvyIS71vs4Tu/yUYHPvGXsTgo0t3arU820+lT5VjZS2go0ewp2LqyCgxEN56CzOG7Iys52eRhHBiD1gGRdiQtw==
 
-graphql-zeus@^5.1.7:
-  version "5.1.7"
-  resolved "https://registry.yarnpkg.com/graphql-zeus/-/graphql-zeus-5.1.7.tgz#5214dece81bf0fe38c4884e909f5bbe7b8606d96"
-  integrity sha512-wRtRzAaGWvsjEIHEPeKr27BzpWyGo7i0hxCn25QsYPYy/AvLB7FGLsbe6a2o1EuUsMZNFKUwbM0r52rejiBYIg==
+graphql-zeus@^5.1.8:
+  version "5.1.8"
+  resolved "https://registry.yarnpkg.com/graphql-zeus/-/graphql-zeus-5.1.8.tgz#9914fd716061fccd16d8720aa95aa117f1c5c374"
+  integrity sha512-xXocDpdjwFw0ihpfhuFlbyqPjMWeWq+om5P94kAuqQpFH4xzWbPQDG60clgknGVa0YnmVkcQPYHEMTQlXxaU+A==
   dependencies:
     cross-fetch "^3.0.4"
     graphql "^16.5.0"
