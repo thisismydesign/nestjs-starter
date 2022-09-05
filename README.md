@@ -41,7 +41,7 @@ docker-compose exec web yarn lint
 docker-compose exec web yarn test
 docker-compose exec web yarn test:request
 docker-compose exec web yarn build
-docker run -it -v $PWD:/e2e -w /e2e --entrypoint=cypress cypress/included:10.0.3 run --config-file cypress.docker.config.ts
+docker run -it -v $PWD:/e2e -w /e2e --net=host --entrypoint=cypress cypress/included:10.0.3 run --config-file cypress.docker.config.ts
 ```
 
 ## Functionality
