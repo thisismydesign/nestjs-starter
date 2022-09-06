@@ -1089,10 +1089,10 @@
     multer "1.4.4-lts.1"
     tslib "2.4.0"
 
-"@nestjs/schematics@^9.0.0", "@nestjs/schematics@^9.0.2":
-  version "9.0.2"
-  resolved "https://registry.yarnpkg.com/@nestjs/schematics/-/schematics-9.0.2.tgz#0b822094b25e87dfe19bad1f6a75719bc91550a7"
-  integrity sha512-pMjdz3YVX1XwTt065oVJjVno/mdbcfoY2nGyMh9lnLkYmAaY9OprT2VASi51AfcKvUhQXbQyuhk9Vvwzr/5NcA==
+"@nestjs/schematics@^9.0.0", "@nestjs/schematics@^9.0.3":
+  version "9.0.3"
+  resolved "https://registry.yarnpkg.com/@nestjs/schematics/-/schematics-9.0.3.tgz#175218350fb3829c9a903e980046a11950310e24"
+  integrity sha512-kZrU/lrpVd2cnK8I3ibDb3Wi1ppl3wX3U3lVWoL+DzRRoezWKkh8upEL4q0koKmuXnsmLiu3UPxFeMOrJV7TSA==
   dependencies:
     "@angular-devkit/core" "14.2.1"
     "@angular-devkit/schematics" "14.2.1"
