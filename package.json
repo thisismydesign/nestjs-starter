@@ -57,7 +57,7 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.5.6",
-    "ts-morph": "^15.1.0",
+    "ts-morph": "^16.0.0",
     "typeorm": "^0.3.9"
   },
   "devDependencies": {
