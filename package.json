@@ -38,7 +38,7 @@
     "@nestjs/passport": "^9.0.0",
     "@nestjs/platform-express": "^9.1.4",
     "@nestjs/typeorm": "^9.0.1",
-    "apollo-server-express": "^3.10.2",
+    "apollo-server-express": "^3.10.3",
     "axios": "^1.1.2",
     "commander": "^9.4.1",
     "cookie-parser": "^1.4.6",
