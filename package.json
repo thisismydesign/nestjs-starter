@@ -80,7 +80,7 @@
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
-    "cypress": "^10.9.0",
+    "cypress": "^10.10.0",
     "dotenv-flow": "^3.2.0",
     "eslint": "^8.25.0",
     "eslint-config-prettier": "^8.5.0",
