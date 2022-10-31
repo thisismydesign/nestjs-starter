@@ -4135,10 +4135,10 @@ grapheme-splitter@^1.0.4:
   resolved "https://registry.yarnpkg.com/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz#9cf3a665c6247479896834af35cf1dbb4400767e"
   integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
 
-graphql-js-tree@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/graphql-js-tree/-/graphql-js-tree-0.1.1.tgz#faacf556e785e21992af2a7368fe29b0a6137f03"
-  integrity sha512-mPEqogLPmsoUzCi0WVddPFHBdCAQikwaYPe8kn6/+ft81ziei5qutP+cpquvFU5eBVHCFzx0PH5Khc9kutOkeQ==
+graphql-js-tree@^0.1.9:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/graphql-js-tree/-/graphql-js-tree-0.1.9.tgz#305d136b01c3125a0392249ad70b621931c65d46"
+  integrity sha512-DiUp0I9ZAc7+kcOzX9dllM1uFjCPbu/8ZLxjCW5dl38ROGen/7Z70oDDaxtDZmwR6bC6COqQGjf9ZWPvz+vD3w==
   dependencies:
     graphql "^15.4.0"
 
@@ -4154,14 +4154,14 @@ graphql-ws@5.5.5:
   resolved "https://registry.yarnpkg.com/graphql-ws/-/graphql-ws-5.5.5.tgz#f375486d3f196e2a2527b503644693ae3a8670a9"
   integrity sha512-hvyIS71vs4Tu/yUYHPvGXsTgo0t3arU820+lT5VjZS2go0ewp2LqyCgxEN56CzOG7Iys52eRhHBiD1gGRdiQtw==
 
-graphql-zeus@^5.1.9:
-  version "5.1.9"
-  resolved "https://registry.yarnpkg.com/graphql-zeus/-/graphql-zeus-5.1.9.tgz#3302b865474da7f259a6c16d855cede699d271ad"
-  integrity sha512-nO9Fb4Ffjd1ca6zcdmSDwvTahTJWsF/vmNQrZrFd2n7vLryaK1RiG1FinkW2lxYsv2ND50wUFIt41hc0El8J0w==
+graphql-zeus@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/graphql-zeus/-/graphql-zeus-5.2.0.tgz#266be881171a2a254dee588e672696722cbe4cc4"
+  integrity sha512-FRvhG37DSoQtnIqjs6T8mPy+PEF9SYN1gI+wtbQD75M1808yAxkuz6puV+rjBT9ciaUeV3tROkjbq7mPQ9gw1Q==
   dependencies:
     cross-fetch "^3.0.4"
     graphql "^16.5.0"
-    graphql-js-tree "^0.1.1"
+    graphql-js-tree "^0.1.9"
     yargs "^16.1.1"
 
 graphql@^15.4.0:
