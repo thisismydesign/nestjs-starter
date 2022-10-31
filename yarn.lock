@@ -1055,10 +1055,10 @@
     tslib "2.4.0"
     uuid "9.0.0"
 
-"@nestjs/graphql@^10.1.3":
-  version "10.1.3"
-  resolved "https://registry.yarnpkg.com/@nestjs/graphql/-/graphql-10.1.3.tgz#db1e4a67299c2dbdf4530f7bc67020365ba1b1ae"
-  integrity sha512-+dEprdyrTQ0mh2Sr0XLm/Bd4whsvxxJ6ZXDkVHe5fdGa85oN89F4j9r/jTS5e7lBgQLd2hLVqWAkf2+GfZFELg==
+"@nestjs/graphql@^10.1.5":
+  version "10.1.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/graphql/-/graphql-10.1.5.tgz#3eb013d50c0fe1ed040f1f9b07c77c3e7161c556"
+  integrity sha512-vdqdmddzLhTODRpw7Xnes0leNptJbVhvHu8/0CjpvMgjaEFcETaZ7Qz81MODXjVt22rbFoPblLwMxcFCZRE+Tw==
   dependencies:
     "@graphql-tools/merge" "8.3.6"
     "@graphql-tools/schema" "9.0.4"
@@ -1073,7 +1073,7 @@
     subscriptions-transport-ws "0.11.0"
     tslib "2.4.0"
     uuid "9.0.0"
-    ws "8.9.0"
+    ws "8.10.0"
 
 "@nestjs/jwt@^9.0.0":
   version "9.0.0"
@@ -7563,10 +7563,10 @@ write-file-atomic@^4.0.1:
     imurmurhash "^0.1.4"
     signal-exit "^3.0.7"
 
-ws@8.9.0:
-  version "8.9.0"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-8.9.0.tgz#2a994bb67144be1b53fe2d23c53c028adeb7f45e"
-  integrity sha512-Ja7nszREasGaYUYCI2k4lCKIRTt+y7XuqVoHR44YpI49TtryyqbqvDMn5eqfW7e6HzTukDRIsXqzVHScqRcafg==
+ws@8.10.0:
+  version "8.10.0"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.10.0.tgz#00a28c09dfb76eae4eb45c3b565f771d6951aa51"
+  integrity sha512-+s49uSmZpvtAsd2h37vIPy1RBusaLawVe8of+GyEPsaJTCMpj/2v8NpeK1SHXjBlQ95lQTmQofOJnFiLoaN3yw==
 
 "ws@^5.2.0 || ^6.0.0 || ^7.0.0":
   version "7.5.9"
