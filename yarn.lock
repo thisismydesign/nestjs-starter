@@ -4151,14 +4151,31 @@ graphql-ws@5.5.5:
   resolved "https://registry.yarnpkg.com/graphql-ws/-/graphql-ws-5.5.5.tgz#f375486d3f196e2a2527b503644693ae3a8670a9"
   integrity sha512-hvyIS71vs4Tu/yUYHPvGXsTgo0t3arU820+lT5VjZS2go0ewp2LqyCgxEN56CzOG7Iys52eRhHBiD1gGRdiQtw==
 
-graphql-zeus@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/graphql-zeus/-/graphql-zeus-5.2.0.tgz#266be881171a2a254dee588e672696722cbe4cc4"
-  integrity sha512-FRvhG37DSoQtnIqjs6T8mPy+PEF9SYN1gI+wtbQD75M1808yAxkuz6puV+rjBT9ciaUeV3tROkjbq7mPQ9gw1Q==
+graphql-zeus-core@*:
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/graphql-zeus-core/-/graphql-zeus-core-5.2.3.tgz#ecef935c249f35936a9a0475098b766c375fd1b4"
+  integrity sha512-ZUTlGr8RGDugoV1+j7izCOmpMuZvRxMUveJAcwcWhlAlVqrCuURQL6VrJ7nA8uxIKD5rCUiXT+c56/hp67KgBw==
   dependencies:
-    cross-fetch "^3.0.4"
     graphql "^16.5.0"
     graphql-js-tree "^0.1.9"
+
+graphql-zeus-jsonschema@*:
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/graphql-zeus-jsonschema/-/graphql-zeus-jsonschema-5.2.3.tgz#b056843fdb52abe8416cda306183764ee1d2311d"
+  integrity sha512-EP8k/ofO5VSCGIGJNh+SlE20nQNMu1QIJtqe/LpljZL2lRclz+8PZi5DNpJanB9HpAslvEpW8TYY50GMa2uMEA==
+  dependencies:
+    graphql "^16.5.0"
+    graphql-js-tree "^0.1.9"
+    json-schema "^0.3.0"
+
+graphql-zeus@^5.2.3:
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/graphql-zeus/-/graphql-zeus-5.2.3.tgz#7efe3b729f8a7999e32dce42a30b2f361af2f0ab"
+  integrity sha512-qHgAT2Z2wMttRPpNjjLp20H4cjsrhKAExXbHjBcYXCbXNnvNgaqPYZbOJVNsrdC8yJDRWZZ2d8PdKwFDgplMjA==
+  dependencies:
+    cross-fetch "^3.0.4"
+    graphql-zeus-core "*"
+    graphql-zeus-jsonschema "*"
     yargs "^16.1.1"
 
 graphql@^15.4.0:
@@ -5147,6 +5164,11 @@ json-schema@0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/json-schema/-/json-schema-0.4.0.tgz#f7de4cf6efab838ebaeb3236474cbba5a1930ab5"
   integrity sha512-es94M3nTIfsEPisRafak+HDLfHXnKBhV3vU5eqPcS3flIWqcxJWgXHXiey3YrpaNsanY5ei1VoYEbOzijuq9BA==
+
+json-schema@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/json-schema/-/json-schema-0.3.0.tgz#90a9c5054bd065422c00241851ce8d59475b701b"
+  integrity sha512-TYfxx36xfl52Rf1LU9HyWSLGPdYLL+SQ8/E/0yVyKG8wCCDaSrhPap0vEdlsZWRaS6tnKKLPGiEJGiREVC8kxQ==
 
 json-stable-stringify-without-jsonify@^1.0.1:
   version "1.0.1"
