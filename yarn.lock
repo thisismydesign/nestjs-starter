@@ -1046,17 +1046,17 @@
     lodash "4.17.21"
     uuid "8.3.2"
 
-"@nestjs/core@^9.1.6":
-  version "9.1.6"
-  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-9.1.6.tgz#b73a453a40470a1456fc404384b195e816da0828"
-  integrity sha512-B52nYYTDSH72f1DU0G14NQSPCviXRE9fCp2/gUHuWIfVfBwcmVBAxVgyB/jAIUAhhj1f5/2odwUiw194xYtRRA==
+"@nestjs/core@^9.2.1":
+  version "9.2.1"
+  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-9.2.1.tgz#598e51a421a0aaafc568c1a02499f7c1f9491caf"
+  integrity sha512-a9GkXuu8uXgNgCVW+17iI8kLCltO+HwHpU2IhR+32JKnN2WEQ1YEWU4t3GJ2MNq44YkjIw9zrKvFkjJBlYrNbQ==
   dependencies:
     "@nuxtjs/opencollective" "0.3.2"
     fast-safe-stringify "2.1.1"
     iterare "1.2.1"
     object-hash "3.0.0"
     path-to-regexp "3.2.0"
-    tslib "2.4.0"
+    tslib "2.4.1"
     uuid "9.0.0"
 
 "@nestjs/graphql@^10.1.7":
