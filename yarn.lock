@@ -1172,12 +1172,12 @@
   dependencies:
     tslib "2.4.1"
 
-"@nestjs/typeorm@^9.0.1":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@nestjs/typeorm/-/typeorm-9.0.1.tgz#f78bfc00e71731ea860288e4a03830107daf3d9c"
-  integrity sha512-A2BgLIPsMtmMI0bPKEf4bmzgFPsnvHqNBx3KkvaJ7hJrBQy0OqYOb+Rr06ifblKWDWS2tUPNrAFQbZjtk3PI+g==
+"@nestjs/typeorm@^10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/typeorm/-/typeorm-10.0.0.tgz#78e20d3413d59dd3dfee03260c904f0f4040b4e1"
+  integrity sha512-WQU4HCDTz4UavsFzvGUKDHqi0MO5K47yFoPXdmh+Z/hCNO7SHCMmV9jLiLukM8n5nKUqJ3jDqiljkWBcZPdCtA==
   dependencies:
-    uuid "8.3.2"
+    uuid "9.0.0"
 
 "@next/env@13.1.0":
   version "13.1.0"
