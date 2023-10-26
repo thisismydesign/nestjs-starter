@@ -12,10 +12,14 @@ export class ViewController {
   public async assets(@Req() req: Request, @Res() res: Response) {
     await this.viewService.handler(req, res);
   }
+  @Get('home')
+  public async home(@Req() req: Request, @Res() res: Response) {
+    await this.viewService.handler(req, res);
+  }
 
   @UseGuards(JwtAuthGuard)
   @Get('/:path((?!graphql$))*')
-  public async showProfile(@Req() req: Request, @Res() res: Response) {
+  public async authenticatedPage(@Req() req: Request, @Res() res: Response) {
     await this.viewService.handler(req, res);
   }
 }
