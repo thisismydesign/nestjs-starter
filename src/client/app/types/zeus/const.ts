@@ -1,21 +1,10 @@
 /* eslint-disable */
 
 export const AllTypesProps: Record<string,any> = {
-	DateTime: "String",
+	DateTime: `scalar.DateTime` as const,
 	Mutation:{
 		createOrder:{
-			alias:{
-				type:"String",
-				array:false,
-				arrayRequired:false,
-				required:true
-			},
-			thingName:{
-				type:"String",
-				array:false,
-				arrayRequired:false,
-				required:true
-			}
+
 		}
 	}
 }
@@ -31,6 +20,7 @@ export const ReturnTypes: Record<string,any> = {
 		created_at:"DateTime",
 		updated_at:"DateTime"
 	},
+	DateTime: `scalar.DateTime` as const,
 	Order:{
 		id:"Float",
 		alias:"String",
@@ -55,4 +45,9 @@ export const ReturnTypes: Record<string,any> = {
 	Mutation:{
 		createOrder:"Order"
 	}
+}
+
+export const Ops = {
+query: "Query" as const,
+	mutation: "Mutation" as const
 }
