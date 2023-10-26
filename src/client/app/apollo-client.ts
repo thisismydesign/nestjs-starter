@@ -9,14 +9,27 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+export const context = (req: Request) => {
+  return { headers: { Cookie: req.headers.cookie } };
+};
+
 export const typedQuery = <Z extends ValueTypes[O], O extends 'Query'>(
   query: Z | ValueTypes[O],
   req: Request,
-  operationName?: string,
 ) => {
   return client.query<InputType<GraphQLTypes[O], Z>>({
-    query: gql(Zeus('query', query, operationName)),
-    context: { headers: { Cookie: req.headers.cookie } },
+    query: gql(Zeus('query', query)),
+    context: context(req),
+  });
+};
+
+export const typedMutation = <Z extends ValueTypes[O], O extends 'Mutation'>(
+  mutation: Z | ValueTypes[O],
+  req: Request,
+) => {
+  return client.mutate<InputType<GraphQLTypes[O], Z>>({
+    mutation: gql(Zeus('mutation', mutation)),
+    context: context(req),
   });
 };
 
