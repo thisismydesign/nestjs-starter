@@ -26,14 +26,6 @@ It has
 
 The deployments below are probably in sleep mode and will take a minute to come online when you open them.
 
-### Production
-
-https://nestjs-starter-production.herokuapp.com/
-
-### Staging
-
-https://nestjs-starter-staging.herokuapp.com/
-
 ### Dev
 
 ```sh
