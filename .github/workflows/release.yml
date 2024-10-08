@@ -1,10 +1,11 @@
 name: Release
 
-on:
-  push:
-    branches:
-      - master
-      - main
+# Customize & enable to release to Heroku
+# on:
+#   push:
+#     branches:
+#       - master
+#       - main
 
 env:
   HEROKU_STAGING_APP_NAME: nestjs-starter-staging
