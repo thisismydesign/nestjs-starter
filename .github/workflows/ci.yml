@@ -183,7 +183,7 @@ jobs:
         wait-on-timeout: 120
 
     - name: Save Cypress artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: cypress-artifacts
@@ -196,7 +196,7 @@ jobs:
       run: docker compose logs --timestamps --tail="all" > docker-logs.txt
 
     - name: Save log artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: log-artifacts
