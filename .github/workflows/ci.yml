@@ -77,7 +77,7 @@ jobs:
       run: ./scripts/docker_setup_init.sh
 
     - name: Pull images
-      run: docker compose pull
+      run: docker compose pull db
 
     - name: Run lint
       run: docker compose run web yarn lint
@@ -108,7 +108,7 @@ jobs:
       run: ./scripts/docker_setup_init.sh
 
     - name: Pull images
-      run: docker compose pull
+      run: docker compose pull db
 
     - name: Run tests
       run: docker compose run web yarn test
@@ -139,7 +139,7 @@ jobs:
       run: ./scripts/docker_setup_init.sh
 
     - name: Pull images
-      run: docker compose pull
+      run: docker compose pull db
 
     - name: Run request tests
       run: docker compose run web yarn test:request
@@ -171,7 +171,7 @@ jobs:
       run: ./scripts/docker_setup_init.sh
 
     - name: Pull images
-      run: docker compose pull
+      run: docker compose pull db
 
     - name: Docker up
       run: docker compose up --detach
