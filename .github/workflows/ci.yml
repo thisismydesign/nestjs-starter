@@ -17,13 +17,13 @@ jobs:
         run: ./scripts/docker_setup_init.sh
 
       - name: Pull images
-        run: docker-compose pull db
+        run: docker compose pull db
 
       - name: Docker build
-        run: docker-compose build web
+        run: docker compose build web
 
       - name: Docker init
-        run: docker-compose run --rm web sh -c 'exit 0'
+        run: docker compose run --rm web sh -c 'exit 0'
 
   build-docker-image:
     runs-on: ubuntu-latest
@@ -77,10 +77,10 @@ jobs:
       run: ./scripts/docker_setup_init.sh
 
     - name: Pull images
-      run: docker-compose pull
+      run: docker compose pull db
 
     - name: Run lint
-      run: docker-compose run web yarn lint
+      run: docker compose run web yarn lint
 
   test:
     runs-on: ubuntu-latest
@@ -108,10 +108,10 @@ jobs:
       run: ./scripts/docker_setup_init.sh
 
     - name: Pull images
-      run: docker-compose pull
+      run: docker compose pull db
 
     - name: Run tests
-      run: docker-compose run web yarn test
+      run: docker compose run web yarn test
 
   test-request:
     runs-on: ubuntu-latest
@@ -139,10 +139,10 @@ jobs:
       run: ./scripts/docker_setup_init.sh
 
     - name: Pull images
-      run: docker-compose pull
+      run: docker compose pull db
 
     - name: Run request tests
-      run: docker-compose run web yarn test:request
+      run: docker compose run web yarn test:request
 
   test-e2e:
     runs-on: ubuntu-latest
@@ -171,10 +171,10 @@ jobs:
       run: ./scripts/docker_setup_init.sh
 
     - name: Pull images
-      run: docker-compose pull
+      run: docker compose pull db
 
     - name: Docker up
-      run: docker-compose up --detach
+      run: docker compose up --detach
 
     - name: Cypress run
       uses: cypress-io/github-action@v4
@@ -183,7 +183,7 @@ jobs:
         wait-on-timeout: 120
 
     - name: Save Cypress artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: cypress-artifacts
@@ -193,10 +193,10 @@ jobs:
 
     - name: Docker setup logs
       if: always()
-      run: docker-compose logs --timestamps --tail="all" > docker-logs.txt
+      run: docker compose logs --timestamps --tail="all" > docker-logs.txt
 
     - name: Save log artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: log-artifacts

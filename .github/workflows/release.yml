@@ -1,10 +1,11 @@
 name: Release
 
-on:
-  push:
-    branches:
-      - master
-      - main
+# Customize & enable to release to Heroku
+# on:
+#   push:
+#     branches:
+#       - master
+#       - main
 
 env:
   HEROKU_STAGING_APP_NAME: nestjs-starter-staging
@@ -69,7 +70,7 @@ jobs:
         config-file: cypress.staging.config.ts
 
     - name: Save Cypress artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: cypress-artifacts-staging
@@ -105,7 +106,7 @@ jobs:
         config-file: cypress.production.config.ts
 
     - name: Save Cypress artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: cypress-artifacts-production
