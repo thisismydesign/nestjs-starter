@@ -5,9 +5,9 @@ const config: Config.InitialOptions = {
   modulePaths: ['.'],
   testRegex: '.*\\.spec\\.ts$',
   transform: {
-    '^.+\\.(t|j)s$': 'ts-jest',
+    '^.+\\.ts$': 'ts-jest',
   },
-  collectCoverageFrom: ['src/server/**/*.(t|j)s'],
+  collectCoverageFrom: ['src/server/**/*.ts'],
   coveragePathIgnorePatterns: ['src/server/console', 'src/server/migration'],
   coverageDirectory: 'coverage',
   testEnvironment: 'node',
