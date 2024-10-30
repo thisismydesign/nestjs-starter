@@ -34,10 +34,13 @@ jobs:
           password: ${{ secrets.HEROKU_API_KEY }}
 
       - name: Docker build
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           push: true
-          tags: registry.heroku.com/${{ env.HEROKU_STAGING_APP_NAME }}/web,registry.heroku.com/${{ env.HEROKU_PRODUCTION_APP_NAME }}/web
+          provenance: false # https://help.heroku.com/74S3XXMP/workaround-for-docker-push-error-405-method-not-allowed-using-buildkit-0-11
+          tags: |
+            registry.heroku.com/${{ env.HEROKU_STAGING_APP_NAME }}/web
+            registry.heroku.com/${{ env.HEROKU_PRODUCTION_APP_NAME }}/web
           file: Dockerfile.prod
           cache-from: type=gha
           cache-to: type=gha
